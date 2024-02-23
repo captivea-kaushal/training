@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="practice_student_result_form" model="ir.ui.view">
+        <field name="name">my_practice_module.student_result.form</field>
+        <field name="model">practice.student.result</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="subject"/>
+                        <field name="min_marks"/>
+                        <field name="max_marks"/>
+                        <field name="obtained_marks"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="practice_student_result_tree" model="ir.ui.view">
+        <field name="name">my_practice_module.student_result.tree</field>
+        <field name="model">practice.student.result</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="subject"/>
+                <field name="min_marks"/>
+                <field name="max_marks"/>
+                <field name="obtained_marks"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="practice_student_result_action" model="ir.actions.act_window">
+        <field name="name">Result</field>
+        <field name="res_model">practice.student.result</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="practice_student_result_menu" name="Result" parent="practice_student_profile_menu_root" action="practice_student_result_action"/>
+</odoo>

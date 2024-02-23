@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="practice_student_profile_form" model="ir.ui.view">
+        <field name="name">my_practice_module.student_profile.form</field>
+        <field name="model">practice.student.profile</field>
+        <field name="arch" type="xml">
+
+            <form>
+                <sheet>
+                    <group>
+                        <field name="student_name"/>
+                        <field name="date_of_birth"/>
+                        <field name="age" groups="my_practice_module.group_my_practice_module_student"/>
+                        <field name="counter"/>
+                        <field name="scale1"/>
+                        <field name="base_count"/>
+                        <field name="variable_count"/>
+                    </group>
+                    <group>
+                        <field name="teacher_for_student_id" options="{'no_create': True}">
+                            <tree>
+                                <field name="teacher_name"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <button name="action_test" string="Test it !" type="object" class="oe_highlight"/>
+                    </group>
+                    <notebook>
+                        <page string="Result">
+                            <field name="result_for_student_ids" widget="one2many_list">
+                                <tree>
+                                    <field name="subject"/>
+                                    <field name="min_marks"/>
+                                    <field name="max_marks"/>
+                                    <field name="obtained_marks"/>
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="practice_student_profile_tree" model="ir.ui.view">
+        <field name="name">my_practice_module.student_profile.tree</field>
+        <field name="model">practice.student.profile</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="student_name"/>
+                <field name="date_of_birth"/>
+                <field name="age"/>
+                <field name="counter"/>
+                <field name="scale1"/>
+                <field name="base_count"/>
+                <field name="variable_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="practice_student_profile_search" model="ir.ui.view">
+        <field name="name">my_practice_module.student_profile.search</field>
+        <field name="model">practice.student.profile</field>
+        <field name="arch" type="xml">
+            <search>
+                <field string="Name" name="student_name" filter_domain="['|','|','|',('student_name','ilike',self),('date_of_birth','ilike',self),('age','ilike',self),('counter','ilike',self)]"/>
+                <field string="Age" name="age"/>
+                <field string="DOB" name="date_of_birth"/>
+                <field string="Counter" name="counter"/>
+                <field string="Scale" name="scale1"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="practice_student_profile_action" model="ir.actions.act_window">
+        <field name="name">Student Profile</field>
+        <field name="res_model">practice.student.profile</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+    <menuitem id="practice_student_profile_menu_root" name="Student" action="practice_student_profile_action"/>
+    <menuitem id="practice_student_profile_menu" name="Student Profile" parent="practice_student_profile_menu_root" action="practice_student_profile_action"/>
+</odoo>

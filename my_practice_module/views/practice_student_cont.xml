@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="student_cont_template" name="School Student">
+        <t t-call="website.layout">
+            <div class="container">
+                <t t-foreach="students" t-as="student">
+                    <ul>
+                        <hr/>
+                        <br/>
+                        <p><span><t t-esc="student.student_name"/></span> : <span><t t-esc="student.date_of_birth"/></span></p>
+                        <br/>
+                    </ul>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="practice_student_teacher_form" model="ir.ui.view">
+        <field name="name">my_practice_module.student_teacher.form</field>
+        <field name="model">practice.student.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="teacher_name"/>
+                        <field name="subject"/>
+                        <field name="is_active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="practice_student_teacher_tree" model="ir.ui.view">
+        <field name="name">my_practice_module.student_teacher.tree</field>
+        <field name="model">practice.student.teacher</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="teacher_name"/>
+                <field name="subject"/>
+                <field name="is_active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="practice_student_teacher_action" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">practice.student.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="practice_student_teacher_menu" name="Teacher" parent="practice_student_profile_menu_root" action="practice_student_teacher_action"/>
+</odoo>

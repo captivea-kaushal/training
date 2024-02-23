@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sale_order_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="column" style="flex: 1;">
+                                <div class="content">
+                                    <div>
+                                        <img src="/report_creation/static/description/company1.png" alt="IMG" height="125" width="350" style="margin:0;padding:0;"/>
+                                    </div>
+                                    <br> </br>
+                                    <strong><p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;">BILL TO:</p></strong>
+
+                                    <t t-foreach="doc.partner_invoice_id" t-as="partner">
+                                        <!-- Access fields of the related model (res.partner) -->
+                                        <p t-esc="partner.name" style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"/>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.street" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.city" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.zip" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.country_id.name" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span>VAT:</span><span t-esc="partner.vat" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span>EMAIL:</span><span t-esc="partner.email" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <br> </br>
+                                    </t>
+                                    <br> </br>
+                                    <strong><p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;">SHIP TO:</p></strong>
+
+                                    <t t-foreach="doc.partner_shipping_id" t-as="partner">
+                                        <!-- Access fields of the related model (res.partner) -->
+                                        <p t-esc="partner.name" style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"/>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.street" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.city" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.zip" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span t-esc="partner.country_id.name" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span>VAT:</span><span t-esc="partner.vat" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 20px;"><span>EMAIL:</span><span t-esc="partner.email" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <br> </br>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="column" style="flex: 1;">
+                                <h3 style="text-align: center; margin-top: 100px !important; display: block;">CERTIFICATE OF ANALYSIS</h3>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">INVOICE NO.:</span></strong></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">DATE:</span></strong></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">PAYMENT TERMS:</span></strong></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p t-esc="doc.invoice_ids.name" style="align:left;margin-left:-106px;font-size: 22px;"/>
+                                        <p t-esc="doc.invoice_ids.invoice_date" style="align:left;margin-top:-12px;margin-left:-106px;font-size: 22px;"/>
+                                        <p t-esc="doc.payment_term_id.name" style="align:left;margin-top:-12px;margin-left:-106px;font-size: 22px;"/>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">ORIGIN OF GOODS:</span></strong></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">BL NO.:</span></strong></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">PORT OF LOADING:</span></strong></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">PORT OF DISCHARGE:</span></strong></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;font-size: 22px;"><strong><span style="align:left;">TERM OF DELIVERY:</span></strong></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p t-esc="doc.origin" style="align:left;margin-left:-106px;font-size: 22px;"/>
+                                        <p t-esc="doc.invoice_ids.invoice_date" style="align:left;margin-top:-12px;margin-left:-106px;font-size: 22px;"/>
+                                        <p t-esc="doc.payment_term_id.name" style="align:left;margin-top:-12px;margin-left:-106px;font-size: 22px;"/>
+                                    </div>
+                                </div>
+                                <br/>
+
+                            </div>
+
+                        </div>
+                        <hr/>
+                            <div class="row">
+                                <div class="col-3">
+                                    <h3>Description</h3>
+                                </div>
+                                <div class="col-3">
+                                    <h3>Quantity</h3>
+                                </div>
+                                <div class="col-3">
+                                    <h3>Unit Price</h3>
+                                </div>
+                                <div class="col-3">
+                                    <h3>Sub-Total</h3>
+                                </div>
+                            </div>
+                        <hr/>
+                        <t t-foreach="doc.order_line" t-as="line">
+                            <div class="row">
+                                <div class="col-3" style="flex: 1;">
+                                    <p t-esc="line.name"/>
+                                </div>
+                                <div class="col-3" style="flex: 1;">
+                                    <p t-esc="line.product_uom_qty"/>
+                                </div>
+                                <div class="col-3" style="flex: 1;">
+                                    <p t-esc="line.price_unit"/>
+                                </div>
+                                <div class="col-3" style="flex: 1;">
+                                    <p><span t-esc="line.currency_id.name"/> <span t-esc="line.price_subtotal"/> </p>
+                                </div>
+
+                            </div>
+                        </t>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="column" style="flex: 1;">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h2 t-esc="doc.company_id.name"></h2>
+                                <p><span t-esc="doc.company_id.street"/><span t-esc="doc.company_id.street2"/><span t-esc="doc.company_id.zip"/><span t-esc="doc.company_id.city"/></p>
+                                <p><span t-esc="doc.company_id.phone"/><span t-esc="doc.company_id.phone"/></p>
+                            </div>
+                            <div class="column" style="flex: 1;">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h2 t-esc="doc.company_id.name"></h2>
+                                <img src="/report_creation/static/description/signature2.png" alt="IMG" height="150" width="175" style="margin:0;padding:0;align:centre;"/>
+                                <hr/>
+                                <p>Authorized Signature</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="certificate_of_analysis_report_paperformat" model="report.paperformat">
+        <field name="name">Certificate of Analysis</field>
+        <field name="format">A3</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">8</field>
+        <field name="dpi">125</field>
+    </record>
+
+    <record id="action_report_sale_order" model="ir.actions.report">
+        <field name="name">Certificate of Analysis</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">report_creation.report_sale_order_template</field>
+        <field name="report_file">report_creation.report_sale_order_template</field>
+        <field name="print_report_name">'Certificate-of-Analysis'</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="report_creation.certificate_of_analysis_report_paperformat" />
+    </record>
+
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+my_practice_module.access_practice_student_profile,access_practice_student_profile,my_practice_module.model_practice_student_profile,base.group_user,1,1,1,1
+my_practice_module.access_practice_student_result,access_practice_student_result,my_practice_module.model_practice_student_result,base.group_user,1,1,1,1
+my_practice_module.access_practice_student_teacher,access_practice_student_teacher,my_practice_module.model_practice_student_teacher,base.group_user,1,1,1,1

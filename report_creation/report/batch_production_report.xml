@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_creation_batch_production_report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="width: 11.7in; height: 16.5in;margin:0px;">
+                            <div class="content">
+                                    <div style="text-align: right;">
+                                        <div>
+                                            <img src="/report_creation/static/description/company1.png" alt="IMG" height="125" width="350" style="margin:0;padding:0;"/>
+                                        </div>
+                                        <div style="text-align: left; margin: 0; display: inline-block;">
+                                            <p t-field="doc.shipper"/>
+                                        </div>
+                                        <p t-field="doc.certificate_date" align="right"/>
+                                    </div>
+                                    <h1 align="center"><strong>BATCH RELEASE CERTIFICATE</strong></h1>
+                                    <div>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">SHIPPER:</p>
+                                        <p t-field="doc.shipper" style="margin-bottom: 2px;margin-top: 2px;"/>
+                                        <br> </br>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">CONSIGNEE AND NOTIFY PARTY:</p>
+                                        <p t-field="doc.consignee"/>
+                                        <br> </br>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">BL NO : <span t-field="doc.bl_no" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">BL DATE : <span t-field="doc.bl_date" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">INVOICE NO : <span t-field="doc.invoice_no" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">INVOICE DATE : <span t-field="doc.invoice_date" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">BATCH NO : <span t-field="doc.batch_no" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">MANUFACTURING DATE : <span t-field="doc.manufacturing_date" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">EXPIRY DATE : <span t-field="doc.expiry_date" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">TOTAL NET WEIGHT :<span t-field="doc.total_net_weight" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                        <br> </br>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;">CONTAINER AND SEAL NUMBER</p>
+                                        <p style="margin-bottom: 2px;margin-top: 2px;"><span t-field="doc.container_no" style="margin-bottom: 2px;margin-top: 2px;"/> / <span t-field="doc.seal_no" style="margin-bottom: 2px;margin-top: 2px;"/></p>
+                                    </div>
+                                    <br> </br>
+                                    <div>
+                                        <img src="/report_creation/static/description/signature2.png" alt="IMG" height="150" width="175" style="margin:0;padding:0;"/>
+                                    </div>
+                                    <p style="margin-bottom: 2px;margin-top: 2px;">Authorized Signatory</p>
+                                    <p style="margin-bottom: 2px;margin-top: 2px;">ArrowChem Pte Ltd</p>
+
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+    </template>
+
+    <record id="batch_production_report_paperformat" model="report.paperformat">
+        <field name="name">Batch Production Report</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+<!--        <field name="page_height">297</field>-->
+<!--        <field name="page_width">210</field>-->
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">8</field>
+        <field name="dpi">125</field>
+    </record>
+
+    <record id="action_report_creation_batch_production_report" model="ir.actions.report">
+            <field name="name">Batch Production Report</field>
+            <field name="model">report_creation.report_details</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_creation.report_creation_batch_production_report</field>
+            <field name="report_file">report_creation.report_creation_batch_production_report</field>
+            <field name="print_report_name">'Batch-Release-Cert'</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="report_creation.batch_production_report_paperformat" />
+    </record>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_product_4_product_template_extended" model="product.template">
+            <field name="name">Product from Requirement_15</field>
+            <field name="standard_price">111.0</field>
+            <field name="list_price">777.0</field>
+            <field name="weight">1</field>
+            <field name="description_sale">160x80cm, with Big Flanges</field>
+        </record>
+
+        <record id="product_delivery_extended" model="product.product">
+            <field name="name">Sample Shipping Product</field>
+        </record>
+    </data>
+</odoo>

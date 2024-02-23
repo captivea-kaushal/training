@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data no_update="1">
+        <record id="student_profile_demo_1" model="practice.student.profile">
+            <field name="student_name">Bajrang Bali</field>
+            <field name="age">75</field>
+            <field name="counter">10</field>
+        </record>
+    </data>
+</odoo>
