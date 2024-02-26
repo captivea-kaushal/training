@@ -77,7 +77,11 @@ class StudentProfile(models.Model):
 
             # students = self.env['practice.student.profile'].sudo().browse(20)
             # students.copy({'counter':3})
+            # students = self.env['practice.student.profile'].sudo().search([]).mapped('date_of_birth')
+            # students = self.env['practice.student.profile'].sudo().search([]).sorted('age').mapped('age')
+            products = self.env['product.template'].sudo().search([]).with_context(lang='de_DE').mapped('name')
+
 
             print('>>>>>>>>>>>>>>>')
-            print(f'students : {students}')
+            print(f'products : {products}')
             print('>>>>>>>>>>>>>>>')

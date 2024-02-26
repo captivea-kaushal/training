@@ -7,3 +7,7 @@ class School(http.Controller):
     def school_student(self,**kw):
         students = request.env['practice.student.profile'].sudo().search([])
         return request.render('my_practice_module.student_cont_template',{'students':students})
+
+    @http.route('/school/hello',website=False, auth='public')
+    def school_hello(selfself,**kw):
+        return "Hello World from Karan !!"
