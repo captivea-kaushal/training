@@ -11,9 +11,11 @@ class CrmLeadExtended(models.Model):
 
         all_tag_ids_from_crm_lead = self.tag_ids.ids
 
-        specific_tag_id = 9
-        if specific_tag_id not in all_tag_ids_from_crm_lead:
-            all_tag_ids_from_crm_lead.append(specific_tag_id)
+        specific_tag_name = 'From Lead'
+        specific_tag = self.env['crm.tag'].search([('name', '=', specific_tag_name)], limit=1)
+
+        if specific_tag.id not in all_tag_ids_from_crm_lead:
+            all_tag_ids_from_crm_lead.append(specific_tag.id)
 
         context['default_tag_ids'] = [(6, 0, all_tag_ids_from_crm_lead)]
 

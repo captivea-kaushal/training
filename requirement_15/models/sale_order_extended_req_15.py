@@ -6,14 +6,14 @@ class SaleOrderExtended15(models.Model):
     def action_confirm(self):
 
         result = super(SaleOrderExtended15, self).action_confirm()
-        delivery_line = self.order_line.filtered(lambda line: line.is_delivery)
+        delivery_line = self.order_line.filtered(lambda x: x.is_delivery)
         if not delivery_line:
-            delivery_product = self.env.ref('requirement_15.product_delivery_extended')
+            custom_product = self.env.ref('requirement_15.product_delivery_extended')
             self.order_line.create({
                 'order_id': self.id,
-                'product_id': delivery_product.id,
+                'product_id': custom_product.id,
                 'product_uom_qty': 1.0,
-                'price_unit': delivery_product.list_price,
+                'price_unit': custom_product.list_price,
                 'is_delivery': True,
             })
 
