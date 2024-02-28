@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sale_inherit_demo_tag_change_id" model="crm.tag">
+            <field name="name">from lead</field>
+            <field name="name">data1</field>
+            <field name="name">data2</field>
+        </record>
+        <record id="sale_order_tag_lead" model="crm.tag">
+            <field name="name">From Lead</field>
+        </record>
+    </data>
+</odoo>

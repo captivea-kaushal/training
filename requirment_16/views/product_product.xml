@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_order_form_inherit_datas" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_tag_ids']" position="after">
+                <field name="deposit_product_id"/>
+                <field name="deposit_product_qty"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sale_order_form_inherit_12" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="header//button[@name='action_confirm']" position="after">
+                <button name="Manage_Deposits" string="Manage Deposits" type="object" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
