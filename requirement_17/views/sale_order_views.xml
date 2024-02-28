@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_order_form_inherited_lapy" model="ir.ui.view">
+        <field name="name">sale.order.form.inherited_data</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="header//button[@name='action_confirm']" position="before">
+                <button name="scan_order_lines_and_get_products" string="Scan Order Lines and Get Products"
+                        type="object"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_view_reserved_sale_order_lines" model="ir.actions.act_window">
+        <field name="name">Reserved Sale Order Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="domain">[('order_id.state', 'in', ('sale', 'done')), ('state', '=', 'sale'), ('qty_reserved', '&gt;',-->
+        <!--            0), ('qty_delivered', '&lt;', qty_to_deliver)]-->
+        <field name="domain">
+            [('order_id.state', 'in', ('sale', 'cancel')), ('state', '=', 'sale'), ('qty_reserved', '&gt;', 0), ('qty_delivered', '&lt;', qty_to_deliver)]
+        </field>
+        <field name="context">{'search_default_group_by_product_id': 1}</field>
+    </record>
+
+    <!--    <menuitem id="menu_action_view_reserved_sale_order_lines" name="Reserved Sale Order Lines"-->
+    <!--              parent="sale.menu_sale_root"/>-->
+</odoo>
