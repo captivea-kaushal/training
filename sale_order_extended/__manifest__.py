@@ -11,6 +11,6 @@
     ],
     'demo': ['data/demo_crm_tag.xml', ],
     'installable': True,
-    'application': True,
+    'application': False,
     'license': 'LGPL-3',
 }

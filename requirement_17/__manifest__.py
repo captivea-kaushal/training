@@ -4,9 +4,10 @@
     'author':'Karan',
     'sequence':-22,
     'depends':['base','sale','product'],
-    'data':['views/sale_order_ext_req_17_view.xml'],
+    'data':['views/sale_order_ext_req_17_view.xml',
+            'views/sale_order_line_list_view.xml'],
     'demo':[],
-    'application':True,
+    'application':False,
     'installable':True,
-    'version':'LGPL-3'
+    'license':'LGPL-3'
 }

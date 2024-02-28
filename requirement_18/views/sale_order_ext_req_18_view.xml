@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="sale_order_extended_req_17_view" model="ir.ui.view">
-        <field name="name">sale.order.ext.req.17.form</field>
+    <record id="sale_order_extended_req_18_view" model="ir.ui.view">
+        <field name="name">sale.order.ext.req.18.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_confirm']" position="after">
-                <button name="action_get_products" type="object" string="Get All Products" attrs="{'invisible': [('partner_id', '=', [])]}"/>
+                <button name="action_confirm_and_validate" type="object" string="Confirm And Validate" attrs="{'invisible': [('order_line', '=', [])]}"/>
             </xpath>
         </field>
     </record>

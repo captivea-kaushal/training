@@ -6,7 +6,7 @@
     'depends':['base','sale','product','delivery'],
     'data':['demo/product_template_demo_extended.xml'],
     'demo':[],
-    'application':True,
+    'application':False,
     'installable':True,
-    'version':'LGPL-3'
+    'license':'LGPL-3'
 }

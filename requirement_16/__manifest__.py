@@ -7,7 +7,7 @@
     'data':['views/product_extended_view.xml',
             'views/sale_order_extended_view.xml'],
     'demo':[],
-    'application':True,
+    'application':False,
     'installable':True,
-    'version':'LGPL-3'
+    'license':'LGPL-3'
 }
