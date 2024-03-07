@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_stock_picking_req_23_template">
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="content">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <h1 align="center">Product Wise Picking</h1>
+                                <t t-set="product_ids" t-value="[]"/>
+                                <t t-foreach="docs.move_ids" t-as="move">
+                                    <t t-if="move.product_id not in product_ids">
+                                        <t t-set="product_ids" t-value="product_ids + [move.product_id]"/>
+                                        <t t-call="requirement_23.report_product_picking_section">
+                                            <t t-set="product" t-value="move.product_id"/>
+                                            <t t-set="moves" t-value="docs.move_ids.filtered(lambda x: x.product_id.id == product.id)"/>
+                                        </t>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+        </t>
+    </template>
+
+    <template id="report_product_picking_section">
+                <div class="row">
+                    <div class="content">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h2 t-esc="product.name"/>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Picking</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="moves" t-as="move">
+                                    <tr>
+                                        <td><t t-esc="move.picking_id.name"/></td>
+                                        <td><t t-esc="move.product_uom_qty"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <h3 align="right">Total : <t t-esc="sum(moves.mapped('product_uom_qty'))"/></h3>
+                    </div>
+                </div>
+    </template>
+
+    <record id="report_stock_picking_req_23_paperformat" model="report.paperformat">
+        <field name="name">Product wise Picking</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">8</field>
+        <field name="dpi">125</field>
+    </record>
+
+    <record id="action_report_stock_picking_req_23" model="ir.actions.report">
+        <field name="name">Product wise Picking</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">requirement_23.report_stock_picking_req_23_template</field>
+        <field name="report_file">requirement_23.report_stock_picking_req_23_template</field>
+        <field name="print_report_name">'Product-wise-Picking'</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="requirement_23.report_stock_picking_req_23_paperformat"/>
+    </record>
+</odoo>

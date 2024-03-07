@@ -6,7 +6,7 @@
     'depends':['base','sale','product','stock'],
     'data':['views/sale_order_ext_req_18_view.xml'],
     'demo':[],
-    'application':True,
+    'application':False,
     'installable':True,
     'license':'LGPL-3'
 }

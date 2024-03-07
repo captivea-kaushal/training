@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale_order_extended_req_25_view" model="ir.ui.view">
+        <field name="name">sale.order.ext.req.25.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='tax_id']" position="after">
+                <field name="profit_value"/>
+                <field name="profit_margin_percentage"/>
+            </xpath>
+
+        </field>
+    </record>
+
+     <record id="sale_order_extended_req_25_view_new" model="ir.ui.view">
+        <field name="name">sale.order.ext.req.25.form.new</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+<!--            <xpath expr="//page[@name='order_lines']/group[@name='sale_total']/field[@name='tax_totals']" position="after">-->
+            <xpath expr="//page[@name='order_lines']//group/group/field[@name='tax_totals']" position="after">
+<!--                <field name="id"/>-->
+                <field name="total_profit_value"/>
+                <field name="total_profit_margin_percentage"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sale_order_req_20_template">
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="content">
+                                <h1 align="center">Country Detail Report</h1>
+                                <hr/>
+                                <br/>
+                                <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
+                                    <thead>
+                                        <tr style="border: 1px solid black;">
+                                            <th style="border: 1px solid black; padding: 8px;">Quotation Ref No.</th>
+                                            <th style="border: 1px solid black; padding: 8px;">Customer</th>
+                                            <th style="border: 1px solid black; padding: 8px;">Country Name</th>
+                                            <th style="border: 1px solid black; padding: 8px;">Country Code</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="docs" t-as="doc">
+                                            <tr style="border: 1px solid black;" t-foreach="doc.partner_invoice_id" t-as="partner">
+                                                <td style="font-size: 16px; border: 1px solid black; padding: 8px;">
+                                                    <span t-esc="doc.name"/>
+                                                </td>
+                                                <td style="font-size: 16px; border: 1px solid black; padding: 8px;">
+                                                    <span t-esc="doc.partner_id.name"/>
+                                                </td>
+                                                <td style="font-size: 16px; border: 1px solid black; padding: 8px;">
+                                                    <span t-esc="doc.partner_id.country_id.name"/>
+                                                </td>
+                                                <td style="font-size: 16px; border: 1px solid black; padding: 8px;">
+                                                    <span t-esc="doc.partner_id.zip"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+        </t>
+    </template>
+
+    <record id="report_sale_order_req_20_paperformat" model="report.paperformat">
+        <field name="name">Country Detail</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">8</field>
+        <field name="dpi">125</field>
+    </record>
+
+    <record id="action_report_sale_order_req_20" model="ir.actions.report">
+        <field name="name">Country Detail</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">requirement_20.report_sale_order_req_20_template</field>
+        <field name="report_file">requirement_20.report_sale_order_req_20_template</field>
+        <field name="print_report_name">'Country-Detail'</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="requirement_20.report_sale_order_req_20_paperformat"/>
+    </record>
+
+</odoo>

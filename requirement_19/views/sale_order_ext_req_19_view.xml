@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale_order_extended_req_19_view" model="ir.ui.view">
+        <field name="name">sale.order.ext.req.19.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+                <field name="is_all_picking_completed"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
