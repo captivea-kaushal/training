@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_order_req_29_view_form" model="ir.ui.view">
+        <field name="name">sale.order.req.29.view.form</field>
+        <field name="model">sale.salesperson</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="sales_person" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="action_print_report" string="Print Report" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+
+
+    <record id="action_sale_order_req_29_sale_by_salesperson" model="ir.actions.act_window">
+        <field name="name">Sales By Salesperson</field>
+        <field name="res_model">sale.salesperson</field>
+        <field name="view_mode">form</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="target">new</field>
+    </record>
+
+
+    <menuitem id="menu_sale_order_req_29_sale_by_salesperson" name="Sales By Salesperson" parent="sale.sale_menu_root" action="action_sale_order_req_29_sale_by_salesperson"/>
+
+
+</odoo>

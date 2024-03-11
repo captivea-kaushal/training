@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_sale_order_req_29_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+               <div class="row">
+                    <div class="col-xs-12">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h1 style="text-align:center;">Report By Salesperson</h1>
+                        <hr/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h2 style="text-align:center;">Order Dates:
+                            <t t-esc="data['from_date']"/>
+                            To
+                            <t t-esc="data['to_date']"/>
+                        </h2>
+                        <div>
+                            <t t-foreach="docs.user_id" t-as="salesperson">
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="5">
+                                                <h2><t t-esc="salesperson.name"/></h2>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>Order No</th>
+                                            <th>Customer</th>
+                                            <th>Order Date</th>
+                                            <th>Total Tax</th>
+                                            <th>Total Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-set="total_tax" t-value="0"/>
+                                        <t t-set="total_amount" t-value="0"/>
+                                        <t t-foreach="salesperson.sale_order_ids.filtered(lambda o: o.create_date.date() &gt;= from_date_k and o.create_date.date() &lt;= to_date_k)" t-as="order">
+                                            <tr>
+                                                <td><t t-esc="order.name"/></td>
+                                                <td><t t-esc="order.partner_id.name"/></td>
+                                                <td><t t-esc="order.create_date.date()"/></td>
+                                                <td><t t-esc="order.amount_tax"/></td>
+                                                <td><t t-esc="order.amount_total"/></td>
+                                            </tr>
+                                            <t t-set="total_tax" t-value="total_tax + order.amount_tax"/>
+                                            <t t-set="total_amount" t-value="total_amount + order.amount_total"/>
+                                        </t>
+                                    </tbody>
+                                </table>
+                                <hr/>
+                                <p style="text-align:right;"><span>Grand Total Tax :</span><span t-esc="salesperson.sale_order_ids.currency_id.symbol"/> <span t-esc="total_tax"/></p>
+                                <hr/>
+                                <p style="text-align:right;"><span>Grand Total Amount:</span><span t-esc="salesperson.sale_order_ids.currency_id.symbol"/><span t-esc="total_amount"/></p>
+                                <hr/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="report_sale_order_req_29_paperformat" model="report.paperformat">
+        <field name="name">Product wise Picking</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_spacing">8</field>
+        <field name="dpi">125</field>
+    </record>
+
+    <record id="action_report_sale_order_req_29" model="ir.actions.report">
+        <field name="name">Sales By Salesperson</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">requirement_29.report_sale_order_req_29_template</field>
+        <field name="report_file">requirement_29.report_sale_order_req_29_template</field>
+        <field name="print_report_name">'Sales-By-Salesperson'</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="requirement_29.report_sale_order_req_29_paperformat"/>
+    </record>
+</odoo>
