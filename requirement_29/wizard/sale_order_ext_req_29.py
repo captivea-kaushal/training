@@ -3,6 +3,8 @@ from odoo import api, fields, models
 
 class SaleOrder(models.TransientModel):
     _name = 'sale.salesperson'
+    _transient_max_count = 3
+    _transient_max_hours = 1.0
 
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
