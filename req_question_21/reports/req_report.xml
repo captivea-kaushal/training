@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="requirement_report_file">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div>
+                                <div style="text-align: right;">
+                                    <span t-esc="doc.partner_shipping_id.name"></span>
+
+
+                                    <span t-esc="doc.customer_street"></span>
+
+
+                                    <span t-esc="doc.customer_street2"></span>
+                                    <br/>
+
+
+                                    <span t-esc="doc.customer_city"></span>
+
+
+                                    <span t-esc="doc.customer_state_id.name"/>
+                                    <br/>
+
+
+                                    <span t-esc="doc.customer_country_id.name"></span>
+
+
+                                    <span t-esc="doc.customer_zip"></span>
+
+                                </div>
+
+                                <div style="border-top: 1px; margin-top: 90px;   margin-bottom: 10px;">
+                                    <span style="font-size:30px">Quotation #</span>
+                                    <span style="text-align: left; font-size:30px" t-esc="doc.name"></span>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-3" style="font-size:20px">
+                                        <span>Quotation Date:
+                                            <br/>
+                                            <span style="text-align: left;" t-esc="doc.date_order"></span>
+                                        </span>
+                                    </div>
+                                    <div class="col-5">
+                                    </div>
+                                    <div class="col-4" style="text-align:right; font-size:20px">
+                                        Salesperson:
+                                        <br/>
+
+                                        <span style="text-align: left;" t-esc="doc.user_id.name"></span>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row" style="border-top: 1px; margin-top: 50px;   margin-bottom: 10px;">
+                                <div class="col-4" style="font-size:15px">
+                                    <strong>
+                                        <span>Description.</span>
+                                    </strong>
+                                </div>
+                                <div class="col-2" style="font-size:15px">
+                                    <strong>
+                                        <span>
+                                            Quantity
+                                        </span>
+                                    </strong>
+                                </div>
+                                <div class="col-4" style="text-align:right; font-size:15px">
+                                    <strong>
+                                        <span>
+                                            Unit Price Tax
+                                        </span>
+                                    </strong>
+
+                                </div>
+                                <div class="col-2" style="text-align:right; font-size:15px">
+                                    <strong>
+                                        <span>
+                                            Subtotal
+                                        </span>
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div style="border-top: 1px; margin-top: 50px;   margin-bottom: 10px;">
+                                <div style="background-color:#000000; height:1px;width:50%;"/>
+                                <div>
+                                    Total:
+                                    <span style="text-align: left;" t-esc="doc.amount_total"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+    <record id="action_report_statement_data" model="ir.actions.report">
+        <field name="name">custom report</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">req_question_21.requirement_report_file</field>
+        <field name="report_file">req_question_21.requirement_report_file</field>
+        <field name="binding_model_id" ref="model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

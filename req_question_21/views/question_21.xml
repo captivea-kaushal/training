@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_req_question_tree" model="ir.ui.view">
+        <field name="name">requirement.question.tree</field>
+        <field name="model">requirement.question</field>
+        <field name="arch" type="xml">
+            <tree>
+<!--                <fields name="n"/>-->
+                <!--                <fields name="partner_id"/>-->
+            </tree>
+        </field>
+    </record>
+    <record id="view_req_question_from" model="ir.ui.view">
+        <field name="name">requirement.question.form</field>
+        <field name="model">requirement.question</field>
+        <field name="arch" type="xml">
+            <form>
+                  <fields name="n"/>
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <group>-->
+<!--                            <fields name="n"/>-->
+
+<!--                            &lt;!&ndash;                            <fields name="partner_id"/>&ndash;&gt;-->
+<!--                        </group>-->
+<!--                    </group>-->
+<!--                </sheet>-->
+            </form>
+        </field>
+    </record>
+
+    <record id="action_requirement_question" model="ir.actions.act_window">
+        <field name="name">Requirement data</field>
+        <field name="res_model">requirement.question</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_requirement_question" name="Requirement21"/>
+
+    <menuitem id="menu_sub_requirement_question" parent="menu_requirement_question" name="Requirement question sub"/>
+
+    <menuitem id="menu_requirement_question_child" parent="menu_sub_requirement_question"
+              name="Requirement question child"
+              action="action_requirement_question"/>
+</odoo>

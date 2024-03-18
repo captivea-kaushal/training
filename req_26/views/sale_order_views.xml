@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="custom_sale_order_req26" model="ir.ui.view">
+        <field name="name">custom sale order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//group//field[@name='partner_id']" position="after">
+                <field name="product_tmpl_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
+        <!--<?xml version="1.0" encoding="UTF-8" ?>-->
+        <!--<odoo>-->
+        <!--    <record id="sale_order_extended_req_26_form" model="ir.ui.view">-->
+        <!--        <field name="name">sale.order.extended.req.26.form</field>-->
+        <!--        <field name="model">sale.order</field>-->
+        <!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+        <!--        <field name="arch" type="xml">-->
+        <!--            <xpath expr="//field[@name='partner_id']" position="after">-->
+        <!--                <field name="product_tmpl_ids" widget="many2many_tags"/>-->
+        <!--            </xpath>-->
+        <!--        </field>-->
+        <!--    </record>-->
+        <!--</odoo>-->
+
+
+<!--Create a fresh product with its variants-->
+
+<!--Add stock to those variants-->
+
+<!--In sale.order model, add a field product_tmpl_ids - m2m-->
+
+<!--Apply on change method to product_tmpl_ids field. When onchange is fired add all the variants of that template into sale.order.line-->
+
+<!--While adding the variants to the sale.order.line, check if stock of those variants is available or not,
+skip the variants whose stock is not available and don’t add it to the sale.order.line Stock should be checked for warehouse set in the sale.order-->
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    Sale order form view inherited-->
+    <record id="custom_sale_order_form_view_inherit1111111111" model="ir.ui.view">
+        <field name="name">sale.order.form.sale_order_line_multi_warehouse22222222222222222</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="product_warehouse_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

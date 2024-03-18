@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_req_20_tree_datafff" model="ir.ui.view">
+        <field name="name">req.tree</field>
+        <field name="model">req.rep</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="country_id"/>
+                <field name="country_code_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_req_20_formffff" model="ir.ui.view">
+        <field name="name">req.form.view</field>
+        <field name="model">req.rep</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="country_id"/>
+                            <field name="country_code_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_req_hjhhgk" model="ir.actions.act_window">
+        <field name="name">Req 20</field>
+        <field name="res_model">req.rep</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_req_20_root" name="Requirement20"/>
+
+    <menuitem id="menu_req_20_sub_root" parent="menu_req_20_root" name="req_sub"/>
+
+    <menuitem id="menu_req_20" parent="menu_req_20_sub_root" name="req_20_task1"
+              action="action_req_hjhhgk"/>
+</odoo>

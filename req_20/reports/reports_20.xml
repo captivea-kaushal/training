@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="req_report_20">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <t t-foreach="docs" t-as="country">
+                                <div>
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>Country</th>
+                                            <th>Country code</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <span>
+                                                    <t t-esc="country.country_id.name"/>
+                                                </span>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <span>
+                                                    <t t-esc="country.country_code_id"/>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+    <record id="report_req" model="ir.actions.report">
+        <field name="name">Report Details</field>
+        <field name="model">req.rep</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">req_20.req_report_20</field>
+        <field name="report_file">req_20.req_report_20</field>
+        <field name="binding_model_id" ref="model_req_rep"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

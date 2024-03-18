@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="custom_stock_picking_temp_id">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div style="border-top: 1px; margin-top: 50px; margin-bottom: 10px;">
+                                <strong>
+                                    <span>Stock</span>
+                                </strong>
+                            </div>
+                            <div style="border-top: 1px; margin-top: 50px; margin-bottom: 10px;">
+                                <span t-esc="doc.product_id.name"/>
+                            </div>
+                            <div class="row" style="border-top: 1px; margin-top: 50px; margin-bottom: 10px;">
+                                <div class="col-4" style="font-size:15px">
+                                    <strong>
+                                        <span>Picking</span>
+                                    </strong>
+                                </div>
+                                <div class="col-2" style="font-size:15px"></div>
+                                <div class="col-2" style="text-align:right; font-size:15px"></div>
+                                <div class="col-4" style="text-align:right; font-size:15px">
+                                    <strong>
+                                        <span>Quantity</span>
+                                    </strong>
+                                </div>
+                            </div>
+                            <br/>
+                            <div style="background-color:#000000; height:1px;width:100%;"/>
+                            <tbody>
+                                <t t-set="total_qty" t-value="0"/>
+                                <span t-esc="doc.product_id.name"/>
+                                <t t-foreach="doc.move_ids_without_package" t-as="o">
+                                    <!--                                    <span t-esc="product.product_id.name"/>-->
+                                    <div class="row" style="border-top: 1px; margin-top: 50px; margin-bottom: 10px;">
+                                        <t t-if="o.name">
+                                            <div class="col-4" style="font-size:15px">
+                                                <span t-esc="doc.name"/>
+                                            </div>
+                                            <div class="col-2" style="font-size:15px"></div>
+                                            <div class="col-2" style="text-align:right; font-size:15px"></div>
+                                            <div class="col-4" style="text-align:right; font-size:15px">
+                                                <span t-esc="o.product_uom_qty"/>
+                                            </div>
+                                            <!--                                            <t t-set="total_qty" t-value="total_qty + o.product_uom_qty"/>-->
+                                        </t>
+                                    </div>
+                                    <t t-set="total_qty" t-value="total_qty + o.product_uom_qty"/>
+                                </t>
+                                <div style="background-color:#000000; height:1px;width:100%;"/>
+                                <!--                                 <t t-set="total_qty" t-value="total_qty + o.product_uom_qty"/>-->
+                                <div style="text-align:right;">
+                                    Total:
+                                    <span t-esc="total_qty"/>
+                                </div>
+                            </tbody>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+    <!--    <record id="custom_basic_paper_format_req24" model="report.paperformat">-->
+    <!--        <field name="name">req23 custom paper format</field>-->
+    <!--        <field name="default" eval="False"/>-->
+    <!--        <field name="format">A4</field>-->
+    <!--        <field name="orientation">Portrait</field>-->
+    <!--        <field name="margin_top">40</field>-->
+    <!--        <field name="margin_bottom">32</field>-->
+    <!--        <field name="margin_left">7.00</field>-->
+    <!--        <field name="margin_right">7.00</field>-->
+    <!--        <field name="header_line" eval="False"/>-->
+    <!--        <field name="dpi">90</field>-->
+    <!--    </record>-->
+
+
+    <record id="action_picking_data" model="ir.actions.report">
+        <field name="name">req_24 custom picking report</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">req_24.custom_stock_picking_temp_id</field>
+        <field name="report_file">req_24.custom_stock_picking_temp_id</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">report</field>
+        <!--        <field name="paperformat_id" ref="req_23.custom_basic_paper_format_req24"/>-->
+    </record>
+</odoo>
