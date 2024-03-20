@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<odoo>-->
+<!--    <record id="req_18_view_id" model="ir.ui.view">-->
+<!--        <field name="name">req.practice.form</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//button[@name='action_confirm']" position="before">-->
+<!--                <button name="custom_action_validate" type="object" string="Confirm And Validate" class="oe_highlight" attrs="{'invisible': [('order_line', '=', [])]}"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->
+<odoo>
+    <record id="view_sale_order_form_custom_button" model="ir.ui.view">
+        <field name="name">sale.order.form.custom.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_confirm']" position="before">
+                <button name="action_confirm_and_validate_delivery"
+                        string="Confirm Order and Validate Delivery"
+                        type="object"
+                        class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
