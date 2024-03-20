@@ -8,7 +8,6 @@
     # 'contributors': ["Konsultoo Software Consulting PVT. LTD."],
     # 'description': 'Detailed description of your module',
     'depends': ['base', 'sale', 'crm'],
-    # 'depends': ['base', 'Hospital', 'sale'],
     'data': [
         # 'views/sale.xml',
         # 'security/ir.model.access.csv',
@@ -19,6 +18,6 @@
     ],
     'installable': True,
     'application': True,
-    'auto_install': True,
+    # 'auto_install': True,
     'license': 'LGPL-3',
 }

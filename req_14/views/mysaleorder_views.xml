@@ -5,7 +5,6 @@
         <field name="model">my.saledata</field>
         <field name="arch" type="xml">
             <tree>
-
                 <field name="hos_owner_name"/>
                 <!--                <field name="subject_name"/>-->
                 <!--                <field name="book_lang"/>-->
