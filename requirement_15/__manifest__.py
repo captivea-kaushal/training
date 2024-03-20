@@ -7,12 +7,11 @@
     'sequence': 1,
     'depends': ['base', 'sale', 'product'],
     'data': [
-        'data/demo_sale_order.xml',
         'views/sale_order.xml',
+        'data/demo_sale_order.xml',
     ],
 
     'installable': True,
     'application': True,
-    'auto_install': True,
     'license': 'LGPL-3',
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="my_custom_sale_id" model="ir.ui.view">
+        <field name="name">custom.sale.order.line.view.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//field[@name='partner_id']" position="after">-->
+            <!--                <field name="history_unit_price"/>-->
+            <!--            </xpath>-->
+            <xpath expr="//page[@name='order_lines']//field/tree/field[@name='name']" position="after">
+                <field name="my_custom_history"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="my_custom_purchase_id" model="ir.ui.view">
+        <field name="name">custom.purchase.order.line</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//sheet/group/group/field[@name='name']/field/tree/field[@name='product_qty']"-->
+            <!--                   position="after">-->
+            <!--                <field name="warehouse_id"/>-->
+            <!--            </xpath>-->
+            <xpath expr="//page[@name='products']/field/tree/field[@name='product_qty']" position="after">
+                <field name="my_custom_history"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+        <!--purchase_order_line.xml-->
+
+
+        <!--<?xml version="1.0" encoding="UTF-8" ?>-->
+        <!--<odoo>-->
+        <!--    <record id="purchase_order_line_ext_req_30_view" model="ir.ui.view">-->
+        <!--        <field name="name">purchase.order.ext.req.30.form</field>-->
+        <!--        <field name="model">purchase.order</field>-->
+        <!--        <field name="inherit_id" ref="purchase.purchase_order_form"/>-->
+        <!--        <field name="arch" type="xml">-->
+        <!--            <xpath expr="//page[@name='products']/field/tree/field[@name='product_qty']" position="after">-->
+        <!--                <field name="history_unit_price"/>-->
+        <!--            </xpath>-->
+
+        <!--        </field>-->
+        <!--    </record>-->
+        <!--</odoo>-->
+
+
+        <!--sale_order_line.xml-->
+
+        <!--<?xml version="1.0" encoding="UTF-8" ?>-->
+        <!--<odoo>-->
+        <!--    <record id="sale_order_line_ext_req_30_view" model="ir.ui.view">-->
+        <!--        <field name="name">sale.order.ext.req.30.form</field>-->
+        <!--        <field name="model">sale.order</field>-->
+        <!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+        <!--        <field name="arch" type="xml">-->
+        <!--            <xpath expr="//page[@name='order_lines']/field/tree/field[@name='product_uom_qty']" position="after">-->
+        <!--                <field name="history_unit_price"/>-->
+        <!--            </xpath>-->
+
+        <!--        </field>-->
+        <!--    </record>-->
+        <!--</odoo>-->

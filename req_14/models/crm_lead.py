@@ -4,7 +4,6 @@ from odoo import api, models, fields
 class CrmleadExtend(models.Model):
     _inherit = 'crm.lead'
 
-   
     def _prepare_opportunity_quotation_context(self):
         print('in custom model', self)
         required_tag = self.env['crm.tag'].search([('name', '=', 'from lead')])
@@ -28,4 +27,3 @@ class CrmleadExtend(models.Model):
         if self.user_id:
             quotation_context['default_user_id'] = self.user_id.id
         return quotation_context
-
