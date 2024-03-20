@@ -7,8 +7,7 @@
     'sequence': 1,
     # 'contributors': ["Konsultoo Software Consulting PVT. LTD."],
     # 'description': 'Detailed description of your module',
-    'depends': ['base', 'sale', 'crm', 'Hospital'],
-    # 'depends': ['base', 'Hospital', 'sale'],
+    'depends': ['base', 'sale', 'crm'],
     'data': [
         # 'views/sale.xml',
         # 'security/ir.model.access.csv',

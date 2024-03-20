@@ -25,11 +25,3 @@ class Producttemplate(models.Model):
 
     my_product_id = fields.Many2one('product.template', string="my product template id")
 
-#
-# xml का उपयोग करके एक उत्पाद बनाएं
-#
-# Sale.order फ़ॉर्म पर पुष्टि बटन पर, शिपिंग उत्पाद स्वचालित रूप से sales.order.line मॉडल में जोड़ा जाना चाहिए
-#
-# Sale.order मॉडल के ऑर्डर पुष्टिकरण की उचित विधि प्राप्त करें और शिपिंग लाइन को स्वचालित रूप से जोड़ने के लिए तर्क जोड़ें
-#
-# सुनिश्चित करें कि शिपिंग लाइन केवल एक बार जोड़ी जानी चाहिए - sales.order.line मॉडल में "is_delivery" फ़ील्ड का उपयोग करने का प्रयास करें

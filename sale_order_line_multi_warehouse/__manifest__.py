@@ -1,5 +1,5 @@
 {
-    'name': 'requirment_28',
+    'name': 'sale_order_line_multi_warehouse',
     'version': '16.0.1.0.0',
     'category': 'Sales',
     'summary': 'Set warehouses per sale order lines.',
@@ -13,7 +13,7 @@
     'website': "https://www.konsultoo.com",
     'depends': ['base', 'sale_management', 'account', 'stock'],
     'data': [
-        # 'views/sale_order_view.xml',
+        'views/sale_order_view.xml',
     ],
 
     'license': 'AGPL-3',
