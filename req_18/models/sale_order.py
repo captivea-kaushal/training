@@ -34,15 +34,3 @@ class SaleOrder(models.Model):
 
         return True
 
-# Model
-#
-# sale.order
-#
-# Add a button of type object in sale.order
-#
-# When that button is clicked, try to perform following operations
-#
-# Confirm the order
-#
-# Validate the delivery order
-# #
