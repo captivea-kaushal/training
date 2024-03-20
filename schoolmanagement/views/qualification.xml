@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_qualification_tree" model="ir.ui.view">
+        <field name="name">qualification.tree.view</field>
+        <field name="model">student.qualification</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!--                <field name="college"/>-->
+                <field name="student_degree_id"/>
+                <field name="percentage"/>
+                <!--                <field name="class_group"/>-->
+                <field name="grade"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_qualification_form" model="ir.ui.view">
+        <field name="name">qualification.form.view</field>
+        <field name="model">student.qualification</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <!--                            <field name="college"/>-->
+                            <field name="student_degree_id"/>
+                            <field name="percentage"/>
+                            <field name = "qualification_relation_id"/>
+                            <field name="grade"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_qualification" model="ir.actions.act_window">
+        <field name="name">qualification</field>
+        <field name="res_model">student.qualification</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="student_subject_menu" name="Qualification" parent="menu_student_root_menu_data"
+              action="action_qualification"/>
+</odoo>

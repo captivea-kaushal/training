@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_cancel_appointment_form" model="ir.ui.view">
+        <field name="name">cancel.appointment.wizard.form.view</field>
+        <field name="model">cancel.appointment.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="appointment_id"/>
+                            <!--                            apply domain in xml-->
+                            <!--                                   domain="[('state','=','draft')]"/>-->
+                            <field name="today_cancel"/>
+                        </group>
+                        <group>
+                            <field name="text_reason"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <!--                        <button special="action_cancel" string="Cancel" class="btn-primary"/>-->
+                        <button name="action_cancel" string="Cancel" type="object" class="btn-primary"/>
+
+                        <!--                        <button name="%(om_hospital.action_hospital_Appointment)d" string="Discard" type="object"-->
+                        <!--                                class="btn-secondary"-->
+                        <!--                                data-hotkey="q"/>-->
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_cancel_appointment" model="ir.actions.act_window">
+        <field name="name">cancel appointment</field>
+        <field name="res_model">cancel.appointment.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient tag !
+            </p>
+        </field>
+    </record>
+
+    <!--    <menuitem id="menu_cancel_Appointment_sub_root" parent="menu_hospital_root" name="Appointments"/>-->
+
+    <menuitem id="menu_cancel_Appointment" parent="menu_Appointment_sub_root" name="Cancellation "
+              action="action_cancel_appointment"/>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,is_true
+patient_tag_ceo,baigan,True
+patient_tag_human,human,False
+patient_tag_tiger,tiger,True
+patient_tag_chita,chata12345678123456789,True

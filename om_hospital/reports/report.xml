@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_patient_data">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <!-- Your content goes here -->
+                            <!--                            <tr t-foreach="doc.partner_id" t-as="l">-->
+                            <!--                                <td>-->
+                            <!--                                    <span t-field="l.partner_id.name"/>-->
+                            <!--                                </td>-->
+                            <!--                            </tr>-->
+                            <!--                            <tr t-foreach="doc.partner_id" t-as="l">-->
+                            <!--                                   <td>-->
+                            <!--                                       <span t-field="l.partner_id"/>-->
+                            <!--                                   </td>-->
+                            <!--                            </tr>-->
+                            <!--                            <td t-esc="doc.partner_id.name" />-->
+                            <!--                            <span t-field="doc.Venture_Drive"></span>-->
+
+                            <!--                            <h2>Account Report</h2>-->
+                            <!--                            <table>-->
+                            <!--                                <thead>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <th>Account</th>-->
+                            <!--                                        <th>Amount</th>-->
+                            <!--                                    </tr>-->
+                            <!--&lt;!&ndash;                                </thead>&ndash;&gt;-->
+                            <!--                                <div class="offset-8 col-4">-->
+                            <!--                                    <div style="    color: blue; font-size: 25px; z-index: 1; left: 520px; top: 36px;font-size: 31px;">-->
+                            <!--                                        <h3>-->
+                            <!--&lt;!&ndash;                                            <t t-esc="doc.company_name"/>&ndash;&gt;-->
+                            <!--                                            <span t-field="doc.company_name"/>-->
+                            <!--                                        </h3>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                                <tbody>-->
+                            <!--                                    <tr t-foreach="doc.line_ids" t-as="line">-->
+                            <!--                                        <td>-->
+                            <!--                                            <span t-field="line.account_id.name"/>-->
+                            <!--                                        </td>-->
+                            <!--                                        <td>-->
+                            <!--                                            <span t-field="line.amount"/>-->
+                            <!--                                        </td>-->
+                            <!--                                    </tr>-->
+                            <!--                                </tbody>-->
+                            <!--                        </table>-->
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+
+    <!--    <record id="report_patient_card" model="ir.actions.report">-->
+    <!--        <field name="name">Report Details</field>-->
+    <!--        <field name="model">account.move</field>-->
+    <!--        <field name="report_type">qweb-pdf</field>-->
+    <!--        <field name="report_name">om_hospital.report_patient_data</field>-->
+    <!--        <field name="report_file">om_hospital.report_patient_data</field>-->
+    <!--        <field name="binding_model_id" ref="om_hospital.model_account_move"/>-->
+    <!--        &lt;!&ndash;        <field name="report_hash_integrity" ref="account.model_account_move"/>&ndash;&gt;-->
+    <!--        <field name="binding_type">report</field>-->
+    <!--    </record>-->
+
+    <!--    <div t-if="doc.signature" class="mt-4 ml64 mr4" name="signature">-->
+    <!--        <div class="offset-8">-->
+    <!--&lt;!&ndash;            <strong>Signature</strong>&ndash;&gt;-->
+    <!--        </div>-->
+    <!--        <div class="offset-8">-->
+    <!--            <img t-att-src="image_data_uri(doc.signature)" style="max-height: 4cm; max-width: 8cm;"/>-->
+    <!--        </div>-->
+    <!--        <div class="offset-8 text-center">-->
+    <!--            <p t-field="doc.signed_by"/>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+
+  <record id="paperformat_individual_om_hos" model="report.paperformat">
+        <field name="name">Individual Account</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">23</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">20</field>
+        <field name="dpi">90</field>
+    </record>
+
+     <record id="action_report_product_product" model="ir.actions.report">
+        <field name="name">My Report</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">om_hospital.report_hospital_patient_product</field>
+        <field name="report_file">om_hospital.report_hospital_patient_product</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+         <field name="paperformat_id" ref="om_hospital.paperformat_individual_om_hos"/>
+    </record>
+</odoo>

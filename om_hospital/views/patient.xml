@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hospital_patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|','|',
+                                                        ('name', 'ilike', self),
+                                                        ('ref', 'ilike', self),('age','ilike',self)]"
+                       string="patient name"/>
+                <!--                <field name="ref" string="Reference number "/>-->
+                <!--                <field name="age"/>-->
+                <!--               <separator />-->
+                <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>
+                <separator/>
+                <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>
+                <separator/>
+                <!--                <filter name="Filter_kids" string="kids" domain="[('dob', '&lt;=', 5)]"/>-->
+                <separator/>
+                <filter name="filter_archived" string="Active" domain="[('is_true','=',False)]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="gender" domain="[]" context="{'group_by': 'gender'}"/>
+                </group>
+                <!--                for using searchpanel bar-->
+                <searchpanel>
+                    <field name="gender" icon="fa-bars" select="multi" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_hospital_patient_tree" model="ir.ui.view">
+        <field name="name">hospital.form.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <!--            <tree decoration-success="calc_age &lt; 15">-->
+            <tree decoration-success="calc_age &lt; 15" export_xlsx="0">
+                <field name="name"/>
+                <field name="student_dob"/>
+                <field name="calc_age"/>
+                <field name="ref"/>
+                <field name="gender"/>
+                <field name="is_true"/>
+                <!--                decoration-success = "state == 'done'"-->
+                <!--                       decoration-info = "state == 'draft'"-->
+                <!--                       decoration-danger = "state == 'cancel'"-->
+                <!--                        decoration-warning = "state == 'cancel'"-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">hospital.form.view</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <button name="mysearch_button" string="search button" type="object" class="oe_highlight"/>
+                <sheet>
+                    <h1>
+                        <field name="new_num" readonly="1"/>
+                    </h1>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="student_dob"/>
+                            <field name="calc_age"/>
+                        </group>
+                        <group>
+                            <field name="ref"/>
+                            <field name="gender"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="is_true" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="parent" attrs="{ 'invisible': [('calc_age', '&lt;', 0)] }"/>
+                            <field name="marital_status" attrs="{ 'invisible': [('calc_age', '&lt;', 0)] }"/>
+                            <field name="partner_name" attrs="{'invisible': [('marital_status', '=', 'single')],
+                            'invisible': [('calc_age', '&lt;', 0)],
+                            'required': [('marital_status', '=', 'married')]}"/>
+                        </group>
+                        <!--                        <h3>-->
+                        <!--                            <field name="company_name" placeholder="ArrowChem Pte. Ltd."/>-->
+                        <!--                        </h3>-->
+                        <!--                        <group>-->
+                        <!--                            <field name="company_name" placeholder="ArrowChem Pte. Ltd."/>-->
+                        <!--                            <field name="CO_REGN_NO" placeholder="CO REGN NO. 201003717D"/>-->
+                        <!--                            <field name="Venture_Drive" placeholder="2 Venture Drive, #07-24"/>-->
+                        <!--                            <field name="Vision_Exchange" placeholder="Singapore 608526."/>-->
+                        <!--                            <field name="Tel" placeholder="(65) 6560 0561"/>-->
+                        <!--                            <field name="Fax" placeholder="(65) 6560 0561"/>-->
+                        <!--                            <field name="Email" placeholder="xyz@gmail.com"/>-->
+                        <!--                            <field name="website_url" placeholder="www.vikalpgroup.com"/>-->
+                        <!--                            <field name="website_url"/>-->
+
+                        <!--                            <field name="address" placeholder="Full address Details"/>-->
+                        <!--                            <field name="pincode" placeholder="PINCODE"/>-->
+                        <!--                            <field name="country"/>-->
+                        <!--                            <field name="state" placeholder="STATE"/>-->
+                        <!--                            <field name="Gstin_no" placeholder="09ABQPJ8697K2ZH,"/>-->
+                        <!--                            <field name="iec_no" placeholder="ABQPJ8697K"/>-->
+                        <!--                            <field name="pan_no" placeholder="ABQPJ8697K"/>-->
+                        <!--                            <field name="email" placeholder="sonaimpex.group@gmail.com"/>-->
+
+                        <!--                            <field name="container_and_seal_number"/>-->
+
+                        <!--                        </group>-->
+                        <!--                        <group>-->
+                        <!--                            <field name="SHIPPER" placeholder="CO REGN NO. 201003717D"/>-->
+                        <!--                            <field name="VENTURE_DRIVE_1" placeholder="2 Venture Drive, #07-24"/>-->
+                        <!--                            <field name="VISION_EXCHANGE_1" placeholder="SINGAPORE 608526"/>-->
+                        <!--                            <field name="Tel1" placeholder="(65) 6560 0849,"/>-->
+                        <!--                            <field name="FAX1" placeholder="(65) 6560 0561"/>-->
+                        <!--                            <field name="EMAIL" placeholder="xyz@gmail.com"/>-->
+                        <!--                            <field name="website_url" placeholder="www.vikalpgroup.com"/>-->
+
+
+                        <!--                            <field name="bl_no" placeholder="KMTCKAN2879635"/>-->
+                        <!--                            <field name="bl_date"/>-->
+                        <!--                            <field name="invoice_no" placeholder="24010009"/>-->
+                        <!--                            <field name="invoice_date"/>-->
+                        <!--                            <field name="batch_no" placeholder="10009"/>-->
+                        <!--                            <field name="manufacturing_date"/>-->
+                        <!--                            <field name="expiry_date"/>-->
+                        <!--                            <field name="total_net_weight" placeholder="Total Net Weight"/>-->
+                        <!--                        </group>-->
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_patient" model="ir.actions.act_window">
+        <field name="name">Patient details</field>
+        <!--        <field name="type">ir.actions.act_window</field>-->
+        <field name="res_model">hospital.patient</field>
+        <!--        <field name="context">{'default_filter_male': 1,'default_gender': 1}</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_hospital_root" name="Hospital" sequence="0"
+              web_icon="om_hospital,static/description/hospital.png"/>
+
+    <menuitem id="menu_hospital_sub_root" parent="menu_hospital_root" name="patients" sequence="0"/>
+
+    <menuitem id="menu_patient" parent="menu_hospital_sub_root" name="Patient" sequence="0"
+              action="action_hospital_patient"/>
+</odoo>

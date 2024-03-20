@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_data_sale_order_report_three">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <div style="text-align:left;">
+                            <img src="/om_hospital/static/description/signature_acro.png" alt="image not loading"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-5" style="color: blue; font-size:20px">
+                                <span>ARROWCHEM PTE. LTD.</span>
+                            </div>
+                            <div class="col-2">
+                            </div>
+                            <div class="col-5" style="text-align:right; font-size:20px">
+                                <span>
+                                    CERTIFICATE OF ORIGIN
+                                </span>
+                                <br/>
+                                <span style="text-align: left; font-size:15px">INVOICE NO:</span>
+                                <span style="text-align: left; font-size:15px" t-esc="doc.name"></span>
+                                <br/>
+                                <span style="text-align: left; font-size:15px">DATE:</span>
+                                <span style="text-align: left; font-size:15px" t-esc="doc.date_order"></span>
+                            </div>
+                        </div>
+                        <t t-foreach="doc.partner_invoice_id" t-as="partner">
+                            <span>
+                                BILL TO:
+                            </span>
+                            <br/>
+                            <span style="text-align: left;" t-esc="partner.name"></span>
+                            <p>
+                                <span style="text-align: left;" t-esc="partner.street">some text</span>
+                            </p>
+                            <span style="text-align: left;" t-esc="partner.zip">some text</span>
+                            <span style="text-align: left;" t-esc="partner.city">some text</span>
+                            <br/>
+                            <span style="text-align: left;" t-esc="partner.state_id.name">some text</span>
+                            <span style="text-align: left;" t-esc="partner.country_id.name">some text</span>
+                            <br/>
+                            <span>Vat:</span>
+                            <span style="text-align: left;" t-esc="partner.vat">some text</span>
+                            <span>Email</span>
+                            <span style="text-align: left;" t-esc="partner.email">some text</span>
+                            <br/>
+                            <br/>
+                        </t>
+                        <t t-foreach="doc.partner_shipping_id" t-as="partner">
+                            <span>
+                                SHIP TO:
+                            </span>
+                            <br/>
+                            <span style="text-align: left;" t-esc="partner.name"></span>
+                            <p>
+                                <span style="text-align: left;" t-esc="partner.street">some text</span>
+                            </p>
+                            <span style="text-align: left;" t-esc="partner.zip">some text</span>
+                            <span style="text-align: left;" t-esc="partner.city">some text</span>
+                            <br/>
+                            <span style="text-align: left;" t-esc="partner.state_id.name">some text</span>
+                            <span style="text-align: left;" t-esc="partner.country_id.name">some text</span>
+                            <span style="text-align: left;" t-esc="partner.vat">some text</span>
+                            <br/>
+                            <span>Email:</span>
+                            <span style="text-align: left;" t-esc="partner.email">some text</span>
+                            <br/>
+                            <br/>
+                        </t>
+                        <div style="background-color:#000000; height:1px;width:100%;"/>
+                        <div class="row">
+                            <div class="col-4" style="text-align:left; font-size:20px">
+                                <span>Description.</span>
+                            </div>
+                            <div class="col-2" style="font-size:20px">
+                                <span>
+                                </span>
+                            </div>
+                            <div class="col-2" style="font-size:20px">
+                                <span>
+                                </span>
+                            </div>
+                            <div class="col-4" style="text-align:right; font-size:20px">
+                                <span>
+                                    Quantity
+                                </span>
+                            </div>
+                        </div>
+                        <div style="background-color:#000000; height:1px;width:100%;"/>
+
+                        <div style="background-color:#000000; height:1px;width:100%;"/>
+                        <t t-foreach="doc.order_line" t-as="line">
+                            <div class="row">
+                                <div class="col-4" style="font-size:20px">
+                                    <span style="text-align: left;" t-esc="line.name"></span>
+                                </div>
+                                <div class="col-2" style="font-size:20px">
+                                    <span>
+                                    </span>
+                                </div>
+                                <div class="col-2" style="font-size:20px">
+                                    <span>
+                                    </span>
+                                </div>
+                                <div class="col-4" style="font-size:20px">
+                                    <span style="text-align: left;" t-esc="line.product_uom_qty"></span>
+                                </div>
+                            </div>
+
+                        </t>
+                         <br/>
+                        <br/>
+                        <span>
+                            CONTAINER AND SEAL NUMBER<br/>KMTU7419790/945589
+                            <br/>
+                        </span>
+                         <br/><br/><br/>
+                        <div style="background-color:#000000; height:2px;width:100%;"/>
+                        <span>THIS IS HEREBY CERTIFED THAT THE GOODS ARE OF KOREA ORIGIN.</span>
+                        <div style="background-color:#000000; height:2px;width:100%;"/>
+                        <div class="col-5" style="text-align: right; font-size:20px">
+                            <span>ARROWCHEM PTE. LTD.</span>
+                        </div>
+                        <div style="text-align:right;">
+                            <img src="/om_hospital/static/description/signature.png"
+                                 alt="image not loading."/>
+                        </div>
+                         <div style="text-align:right;">
+                            <span>Authorized Signature</span>
+                        </div>
+                           <div style="text-align:left;">
+                            <span>ARROWCHEM PTE. LTD.</span>
+                        </div>
+                        <div style="text-align:left;">
+                            <span>2 Venture Drive #07-24 Vision Exchange, Singapore 608526. Tel: (65) 6560 0849, Fax: (65) 6560 0561<br/>
+                            Co. Reg. No.: 201003717D</span>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+
+    <record id="report_sale_data_report_three" model="ir.actions.report">
+        <field name="name">Report3 Details</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">om_hospital.report_data_sale_order_report_three</field>
+        <field name="report_file">om_hospital.report_data_sale_order_report_three</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <!--        <field name="report_hash_integrity" ref="account.model_account_move"/>-->
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_patient_tag_tree" model="ir.ui.view">
+        <field name="name">patient.form.tree</field>
+        <field name="model">patient.tag</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="sequence"/>
+                <!--                <field name="sequence" widget="handle"/>-->
+                <field name="is_true"/>
+                <field name="color"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_patient_tag_form" model="ir.ui.view">
+        <field name="name">patient.form.view</field>
+        <field name="model">patient.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!--                    <field name="image" widget="image" class="oe_avatar"/>-->
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="is_true" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+                <!--                <div class="oe_chatter">-->
+                <!--&lt;!&ndash;                    <field name="message_follower_ids" groups="base.group_user"/>&ndash;&gt;-->
+                <!--                    <field name="activity_ids"/>-->
+                <!--                    <field name="message_ids"/>-->
+                <!--                </div>-->
+            </form>
+        </field>
+    </record>
+
+    <record id="action_patient_tag" model="ir.actions.act_window">
+        <field name="name">Patient tag</field>
+        <!--        <field name="type">ir.actions.act_window</field>-->
+        <field name="res_model">patient.tag</field>
+        <!--        <field name="context">{'default_filter_male': 1,'default_gender': 1}</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient tag !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_patient_tag_sub_root" parent="menu_hospital_root" name="configurations"/>
+
+    <menuitem id="menu_patient_tag" parent="menu_patient_tag_sub_root" name="Tag"
+              action="action_patient_tag"/>
+</odoo>

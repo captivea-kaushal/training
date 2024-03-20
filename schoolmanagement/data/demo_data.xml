@@ -1,0 +1,48 @@
+<odoo>
+    <data noupdate="0">
+        <record id="student_school_demo_data1123" model="student.school">
+            <field name="name">sunny</field>
+            <field name="l_name">kumar</field>
+            <field name="age">29</field>
+            <field name="phone">6788498990</field>
+            <field name="email">satya@gmail.com</field>
+            <field name="dob">2027-02-09</field>
+            <field name="gender">m_male</field>
+            <!--            <field name="gender">state - madhya pradesh , city - indore , area - alkapuri</field>-->
+            <field name="highest_qualification">bca</field>
+            <field name="address1">state - madhya pradesh , city - indore , area - alkali</field>
+            <field name="address2">state - madhya pradesh , city - bhopal , area - kaduprur</field>
+            <field name="pincode">805190</field>
+            <!--            <field name="state">bihar</field>-->
+            <!--            <field nmae="country">india</field>-->
+        </record>
+        <record id="student_school_demo_data1123" model="student.school">
+            <field name="name">kundan</field>
+            <field name="l_name">kumar</field>
+            <field name="age">20</field>
+            <field name="phone">6788498578</field>
+            <field name="email">kundan@gmail.com</field>
+            <field name="dob">2000-08-10</field>
+            <field name="gender">m_male</field>
+            <!--            <field name="gender">state - madhya pradesh , city - indore , area - alkapuri</field>-->
+            <field name="highest_qualification">bca</field>
+            <field name="address1">state - up , city - kanpur , area - adheri</field>
+            <field name="address2">state - bihar , city - patna , area - khagadpur</field>
+            <field name="pincode">805100</field>
+        </record>
+         <record id="student_school_demo_data11" model="student.school">
+            <field name="name">kausal</field>
+            <field name="l_name">kumar</field>
+            <field name="age">29</field>
+            <field name="phone">6788496878</field>
+            <field name="email">kausal@gmail.com</field>
+            <field name="dob">1900-08-10</field>
+            <field name="gender">m_male</field>
+            <!--            <field name="gender">state - madhya pradesh , city - indore , area - alkapuri</field>-->
+            <field name="highest_qualification">bsc</field>
+            <field name="address1">state - kolkata, city - kanpur , area - adheri</field>
+            <field name="address2">state - punjab , city - patna , area - khagadpur</field>
+            <field name="pincode">806700</field>
+        </record>
+    </data>
+</odoo>

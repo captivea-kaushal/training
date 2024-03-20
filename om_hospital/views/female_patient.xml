@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     <record id="action_hospital_female_patient" model="ir.actions.act_window">
+           <field name="name">female patient</field>
+           <field name="res_model">hospital.patient</field>
+           <field name="context">{'default_gender': 'female'}}</field>
+           <field name="domain">[('gender','=','female')]</field>
+           <field name="view_mode">tree,form</field>
+<!--           <field name="view_id" ref="crm_lead_view_graph"/>-->
+<!--           <field name="search_view_id" ref="crm.view_crm_case_leads_filter"/>-->
+           <field name="help">Leads Analysis allows you to check different.</field>
+       </record>
+     <menuitem id="menu_female_patient" parent="menu_hospital_sub_root" name="female patient" sequence="1"
+              action="action_hospital_female_patient"/>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="subham_hospital_view_id" model="ir.ui.view">
+        <field name="name">subham_hospital.inherit</field>
+        <field name="model">hospital.subham</field>
+        <field name="inherit_id" ref="Hospital.view_hospital_patient_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_child']" position="after">
+                <field name="subham_hos"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

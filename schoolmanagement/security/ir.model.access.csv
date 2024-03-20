@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+schoolmanagement.access_student_school,access_student_school,schoolmanagement.model_student_school,base.group_user,1,1,1,1
+schoolmanagement.access_result_student,access_result_student,schoolmanagement.model_result_student,base.group_user,1,1,1,1
+schoolmanagement.access_student_subject,access_student_subject,schoolmanagement.model_student_subject,base.group_user,1,1,1,1
+schoolmanagement.access_student_degree,access_student_degree,schoolmanagement.model_student_degree,base.group_user,1,1,1,1
+schoolmanagement.access_student_qualification,access_student_qualification,schoolmanagement.model_student_qualification,base.group_user,1,1,1,1

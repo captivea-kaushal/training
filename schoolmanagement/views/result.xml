@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_result_tree" model="ir.ui.view">
+        <field name="name">result tree view</field>
+        <field name="model">result.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="subject_id"/>
+                <field name="sub_code"/>
+                <field name="min_marks"/>
+                <field name="max_marks"/>
+                <field name="marks_obtained"/>
+                <field name="result_status"/>
+                <field name="result_id" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_result_form" model="ir.ui.view">
+        <field name="name">result form view</field>
+        <field name="model">result.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="subject_id"/>
+                            <field name="sub_code"/>
+                        </group>
+                        <group>
+                            <field name="min_marks"/>
+                            <field name="max_marks"/>
+                            <field name="marks_obtained"/>
+                            <field name="result_status"/>
+                            <field name="result_id" optional="hide"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_result" model="ir.actions.act_window">
+        <field name="name">Result</field>
+        <field name="res_model">result.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="student_result_menu" name="result" parent="menu_student_root_menu_data"
+              action="action_result"/>
+</odoo>

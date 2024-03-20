@@ -1,0 +1,26 @@
+{
+    'name': 'schoolmanagement',
+    'summary': 'only patient type Customer help of this website',
+    'version': '16.0.0.1.0',
+    'category': 'school mamangement system',
+    'sequence': -100,
+    'maintainer': 'Konsultoo Software Consulting PVT. LTD.',
+    # 'contributors': ["Konsultoo Software Consulting PVT. LTD."],
+    # 'description': 'Detailed description of your module',
+    'application': True,
+    'depends': ['base'],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/demo_data.xml',
+        'views/student.xml',
+        'views/result.xml',
+        'views/subject.xml',
+        'views/degree.xml',
+        'views/qualification.xml',
+
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

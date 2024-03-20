@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_hospital_appointment_search" model="ir.ui.view">
+        <field name="name">appointment.search.view</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <search>
+                <!--                <field name="name" filter_domain="['|','|',-->
+                <!--                                                        ('name', 'ilike', self),-->
+                <!--                                                        ('ref', 'ilike', self),('age','ilike',self)]"-->
+                <!--                       string="patient name"/>-->
+                <!--                &lt;!&ndash;                <field name="ref" string="Reference number "/>&ndash;&gt;-->
+                <!--                &lt;!&ndash;                <field name="age"/>&ndash;&gt;-->
+                <!--                &lt;!&ndash;               <separator />&ndash;&gt;-->
+                <!--                <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>-->
+                <!--                <separator/>-->
+                <!--                <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>-->
+                <!--                <separator/>-->
+                <!--&lt;!&ndash;                <filter name="Filter_kids" string="kids" domain="[('age', '&lt;=', 5)]"/>&ndash;&gt;-->
+                <!--                <separator/>-->
+                <!--                <filter name="filter_archived" string="Active" domain="[('active','=',False)]"/>-->
+
+                <!--                <group expand="0" string="Group By">-->
+                <!--                    <filter string="Gender" name="gender" domain="[]" context="{'group_by': 'gender'}"/>-->
+                <!--                </group>-->
+                <!--                &lt;!&ndash;                for using searchpanel bar&ndash;&gt;-->
+                <!--                <searchpanel>-->
+                <!--                    <field name="gender" icon="fa-bars" select="multi" enable_counters="1"/>-->
+                <!--                </searchpanel>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="view_hospital_appointment_tree" model="ir.ui.view">
+        <field name="name">appointment.tree.view</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+
+            <tree decoration-success="state == 'done'" decoration-danger="state == 'cancel'">
+                <!--                 <tree delete="0">-->
+                <header>
+                    <button name="In_progress_action" string="in progress" type="object" states="draft"
+                            class="oe_highlight"/>
+                </header>
+
+                <field name="patient_id"/>
+                <field name="gender" optional="show"/>
+                <field name="ref" optional="hide"/>
+                <field name="docter_id" widget="many2one_avatar_user"/>
+                <field name="activity_ids" widget="list_activity"/>
+                <field name="appointment_time" optional="show"/>
+                <field name="booking_date"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'"
+                       decoration-warning="state == 'verify'" decoration-success="state in ('done','paid')"/>
+
+                <!--                <button name="In_progress_action" string="rainbow" type="object" states="draft"/>-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hospital_appointment_activity" model="ir.ui.view">
+        <field name="name">appointment.activity.view</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <activity string="appointments">
+                <field name="patient_id"/>
+                <field name="ref"/>
+                <templates>
+                    <div t-name="activity-box">
+                        <img t-name=""
+                             t-att-src="activity_image('hospital.patient', 'image', record.patient_id.raw_value)"
+                             role="img" t-att-title="record.patient_id.value" t-att-alt="record.patient_id.value"/>
+                        <div>
+                            <field name="ref" display="full"/>
+                        </div>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_appointment_form" model="ir.ui.view">
+        <field name="name">appointment.form.view</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <!--            <form create="0" delete="0">-->
+            <form>
+                <header>
+                    <button name="action_rainbow" string="rainbow" type="object" states="draft"/>
+                    <button name="action_In_progress" string="In_progress" type="object" states="draft"/>
+                    <button name="action_done" string="done" type="object" states="In_progress"/>
+                    <button name="action_cancel" string="cancel" type="object" states="In_progress,done"/>
+                    <button name="action_draft" string="draft" type="object" states="In_progress,done"/>
+
+                    <!--                    <button name="%(om_hospital.action_cancel_appointment)d" string="cancel" type="action"-->
+                    <!--                            states="In_progress,done"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,In_progress,done,cancel"/>
+                </header>
+                <sheet>
+                    <div>
+                        <h3>
+                            <field name="priority" widget="priority" nolabel="1" class="oe_inline align-top"/>
+                        </h3>
+                    </div>
+                    <h1>
+                        <field name="new_num_appoint" readonly="1"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="gender"/>
+                            <field name="ref"/>
+                            <field name="appointment_count"/>
+                        </group>
+                        <group>
+                            <field name="docter_id" widget="many2one_avatar_user"/>
+                            <field name="appointment_time"/>
+                            <field name="booking_date" default_focous="1"/>
+                            <button name="click_button" string="object button" type="object" class="oe_highlight"/>
+                            <button name="om_hospital.action_hospital_patient" string="action patient button"
+                                    help="if you clicked you can redirected in patient records.. "
+                                    confirm="are your want to sure open the patient model.."
+                                    type="action"
+                                    class="oe_highlight"/>
+                            <button name="%(action_hospital_Appointment)d" string="action appointment button"
+                                    confirm="are your want to sure open the appointment model.."
+                                    help="if you clicked you can redirected in appointment records.. "
+                                    type="action"
+                                    class="oe_highlight"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="prescription" name="prescription">
+                            <field name="prescription" placeholder="enter your prescription"
+                                   options="{'codeview': true,'collaborative': True 'resizable': True}"/>
+                            <!--                            <field name="appointment_time"/>-->
+                        </page>
+                        <page string="pharmacy" name="pharmacy">
+                            <field name="pharmacy_line_ids">
+                                <tree>
+                                    <field name="appointment_id"/>
+                                    <field name="product_id"/>
+                                    <field name="price_unit"/>
+                                    <!--                                                   attrs="{'column_invisible': [('parent.hide_sales_price' ,'=' ,outgoing)]}"/>-->
+                                    <!--                                    <field name="project_name" attrs="{'column_invisible': [('picking_type_code', '!=', 'incoming')]}'/>-->
+                                    <field name="qty"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="appointment_id"/>
+                                            <field name="product_id"/>
+                                            <field name="price_unit"/>
+                                            <!--                                                   attrs="{'column_invisible': [('parent.hide_sales_price' ,'=' ,'outgoing')]}"/>-->
+                                            <!--                                            <field name="price_unit"-->
+                                            <!--                                                   attrs="{'column_invisible':[('parent.hide_sales_price', '=', True)]}"/>-->
+                                            <!--                                            <div attrs="{'column_invisible':[('parent.hide_sales_price', '=', True)]}">-->
+                                            <!--                                                <field name="price_unit"/>-->
+                                            <!--                                            </div>-->
+                                            <field name="qty"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_Appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <!--        <field name="type">ir.actions.act_window</field>-->
+        <field name="res_model">hospital.appointment</field>
+        <!--        <field name="context">{'default_filter_male': 1,'default_gender': 1}</field>-->
+        <field name="view_mode">tree,form,activity</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Appointment !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_Appointment_sub_root" parent="menu_hospital_root" name="Appointments" sequence="0"/>
+
+    <menuitem id="menu_Appointment" parent="menu_Appointment_sub_root" name="Appointment" sequence="0"
+              action="action_hospital_Appointment"/>
+</odoo>
+
+
+        <!--Uncaught Promise > Missing field string information for the field 'currency_provider' from the 'res.config.settings' model-->

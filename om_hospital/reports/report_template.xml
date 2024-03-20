@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--    <template id="report_patient">-->
+    <!--        <t t-call="web.html_container">-->
+    <!--                <t t-foreach="docs" t-as="o">-->
+    <!--                    <t t-call="web.external_layout">-->
+    <!--    &lt;!&ndash;                    <div class="page">&ndash;&gt;-->
+
+    <!--            <div class="header">-->
+    <!--                <img src="data:image/png;base64,{{1.png}}" style="width: 100px; height: 100px;"/>-->
+    <!--                &lt;!&ndash; Other content of the header &ndash;&gt;-->
+    <!--            </div>-->
+    <!--                            <t t-esc="doc.CO_REGN_NO"/>-->
+
+    <template id="report_hospital_patient_product">
+        <!--        <t t-call="web.basic_layout">-->
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div style="text-align:right;">
+                        <img src="/om_hospital/static/description/signature_acro.png"
+                             alt="image not loading."/>
+                    </div>
+                    <div class="page">
+                        <div class="offset-8 col-4">
+                            <p>
+                                <div style="    color: blue; font-size: 25px; z-index: 1; left: 520px; top: 36px;font-size: 31px;">
+                                    <h3>
+                                        <span t-field="doc.company_name"></span>
+                                    </h3>
+                                </div>
+                                <span t-field="doc.CO_REGN_NO"></span>
+                                <br/>
+                                <t t-esc="doc.Venture_Drive"/>
+                                Venture_Drive
+                                <span t-field="doc.Venture_Drive"></span>
+                                <t t-esc="doc.Vision_Exchange"/>
+                                Vision Exchange
+                                <span t-field="doc.Vision_Exchange"></span>
+                                Tel
+                                <span t-field="doc.Tel"></span>
+                                Fax
+                                <span t-field="doc.Fax"></span>
+                                <br/>
+                                Email
+                                <span t-field="doc.Email"></span>
+                                <br/>
+                                website_url
+                                <span t-field="doc.website_url"></span>
+                                <br/>
+                                <span t-field="doc.booking_date"></span>
+                                <br/>
+                            </p>
+                        </div>
+                        <div class="offset-1 col-11">
+                            <div style="text-align: center;">
+                                <br/>
+                                <h4>BATCH RELEASE CERTIFICATE</h4>
+                            </div>
+                            <br/>
+                            <p>
+                                SHIPPER:
+                                <br/>
+                                2 VENTURE DRIVE,
+                                <span t-field="doc.VENTURE_DRIVE_1"></span>
+                                <br/>
+                                <span t-field="doc.VISION_EXCHANGE_1"></span>
+                                <br/>
+                                <span t-field="doc.Tel1"></span>
+                                <br/>
+                                <span t-field="doc.FAX1"></span>
+                                <br/>
+                                <span t-field="doc.EMAIL"></span>
+                                <br/>
+                                <span t-field="doc.website_url"></span>
+                            </p>
+                        </div>
+                        <div class="offset-1 col-11">
+                            <br/>
+                            <span t-field="doc.address"></span>
+                            <br/>
+                            <span t-field="doc.pincode"></span>
+                            <br/>
+                            <span t-field="doc.state"></span>
+                            <br/>
+                            <span t-field="doc.Gstin_no"></span>
+                            <br/>
+                            <span t-field="doc.iec_no"></span>
+                            <br/>
+                            <span t-field="doc.pan_no"></span>
+                            <br/>
+                            <span t-field="doc.email"></span>
+                            <br/>
+                        </div>
+                        <div class="offset-1 col-12">
+                            <br/>
+                            <span t-field="doc.bl_no"></span>
+                            <br/>
+                            <span t-field="doc.bl_date"></span>
+                            <br/>
+                            <span t-field="doc.invoice_no"></span>
+                            <br/>
+                            <span t-field="doc.invoice_date"></span>
+                            <br/>
+                            <span t-field="doc.batch_no"></span>
+                            <br/>
+                            <span t-field="doc.manufacturing_date"></span>
+                            <br/>
+                            <span t-field="doc.expiry_date"></span>
+                            <span t-field="doc.total_net_weight"></span>
+                            <br/>
+                            <br/>
+                            <span t-field="doc.container_and_seal_number"></span>
+                            <!--                            <div style="text-align:left;">-->
+                            <!--                                <img src="/om_hospital/static/description/signature.png"-->
+                            <!--                                     alt="image not loading."/>-->
+                            <!--                            </div>-->
+                            <br/>
+                            Authorized Signatory
+                            <br/>
+                            ArrowChem Pte Ltd
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
+        <!--        </t>-->
+        <!--            <div t-if="doc.signature" class="mt-4 ml64 mr4" name="signature">-->
+        <!--                <div class="offset-8">-->
+        <!--                    <strong>Signature</strong>-->
+        <!--                </div>-->
+        <!--                <div class="offset-8">-->
+        <!--                    <img t-att-src="static/description/hospital.png" style="max-height: 4cm; max-width: 8cm;"/>-->
+        <!--                </div>-->
+        <!--                <div class="offset-8 text-center">-->
+        <!--                    <p t-field="doc.signed_by"/>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            </t>-->
+        <!--            </template>-->
+        <!--            </odoo>-->
+        <!--            </t>-->
+        <!--            </template>-->
+        <!--            </odoo>-->
