@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="custom_sale_order_id" model="ir.ui.view">
-        <field name="name">custom sale order</field>
+    <record id="custom_sale_order_data1_id" model="ir.ui.view">
+        <field name="name">custom.sale.order.view.form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//group//group//field[@name='partner_id']" position="after">
-                <field name="total_profit_margin"/>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="total_profit_margin_percentage"/>
                 <field name="total_profit_value"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="profit_margin_percentage"/>
+                <field name="profit_value"/>
             </xpath>
         </field>
     </record>
-
 </odoo>
