@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_student_search" model="ir.ui.view">
+        <field name="name">student.search.view</field>
+        <field name="model">library.student</field>
+        <field name="arch" type="xml">
+            <search string="odoo search view">
+                <!--                <field name="name" string="search for name"/>-->
+                <!--                <field name="calc_age"/>-->
+                <field name="name" string="calc_age"
+                       filter_domain="['|', ('m_male', like, self),('f_male',like,self)]"/>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">student.tree.view</field>
+        <field name="model">library.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="l_name"/>
+                <field name="calc_age"/>
+                <field name="phone"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">student.form.view</field>
+        <field name="model">library.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <!--                        <field name="title_name"/>-->
+                        <field name="full_name" placeholder=" Student Name"/>
+                    </h1>
+                    <group>
+                        <group string="STUDENT INFORMATION">
+                            <field name="name"/>
+                            <field name="l_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="student_dob"/>
+                            <field name="calc_age"/>
+                            <field name="gender"/>
+                            <field name="total"/>
+                            <field name="amount"/>
+                            <field name="prescription"/>
+                        </group>
+                        <group string="Address">
+                            <field name="address1"/>
+                            <field name="address2"/>
+                            <field name="state"/>
+                            <field name="pincode"/>
+                            <field name="country"/>
+                            <field name="teacher_rel_id"/>
+                        </group>
+                    </group>
+                    <button name="check_orm" string="orm method" type="object" class="oe_highlight"/>
+                    <notebook>
+                        <page string=" Student book details" name="book details">
+                            <field name="book_ids">
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="stu_rel_id"/>
+                                            <field name="subject_id"/>
+                                            <field name="book_no"/>
+                                            <field name="isbn"/>
+                                            <field name="auther_id"/>
+                                            <field name="book_title"/>
+                                        </group>
+                                        <group>
+                                            <field name="year_publish"/>
+                                            <field name="date_arrived"/>
+                                            <field name="book_price"/>
+                                            <field name="quantity"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">student</field>
+        <field name="res_model">library.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_student_root_menu_data" name="library management"/>
+
+    <menuitem id="menu_student_sub_menu_data" name="SCHOOL" parent="menu_student_root_menu_data"/>
+
+    <menuitem id="student_profile_menu" name="Student" parent="menu_student_root_menu_data"
+              action="action_student"/>
+</odoo>

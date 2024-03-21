@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="teacher_access_data_lib" model="ir.model.access">
+        <field name="name">End user permission</field>
+        <field name="teacher_rel_id" ref="model_library_student"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+</odoo>
