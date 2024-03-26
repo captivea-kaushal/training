@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="button_sale.ListView.Buttons" t-inherit="web.ListView.Buttons">
+        <xpath expr="//*[@class='btn btn-primary o_list_button_add']" position="after">
+            <button type="button" class="btn btn-primary" style="margin-left: 10px;" t-on-click="OnTestClick">
+                Open Wizard
+            </button>
+        </xpath>
+    </t>
+<!--    <t t-name="button_sale.AccountViewUploadButton" t-inherit="account.ListView.Buttons" t-inherit-mode="extension" owl="1">-->
+<!--        <xpath expr="//*[@class='btn btn-primary o_list_button_add']" position="after">-->
+<!--            <button type="button" class="btn btn-primary" style="margin-left: 10px;" t-on-click="OnTestClick">-->
+<!--                Open Wizard-->
+<!--            </button>-->
+<!--        </xpath>-->
+
+<!--        <AccountFileUploader>-->
+<!--            <button type="button" class="btn btn-primary" style="margin-left: 10px;" t-on-click="OnTestClick">-->
+<!--                Open Wizard-->
+<!--            </button>-->
+<!--&lt;!&ndash;            <t t-set-slot="default">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button type="button" class="btn btn-secondary o_button_upload_bill">&ndash;&gt;-->
+<!--&lt;!&ndash;                    Upload&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </t>&ndash;&gt;-->
+<!--        </AccountFileUploader>-->
+<!--    </t>-->
+</templates>
