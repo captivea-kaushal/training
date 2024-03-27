@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="employee_expanse_view_form" model="ir.ui.view">
+        <field name="name">employee.expanse.form</field>
+        <field name="model">employee.expanse</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="action_approval_level_one" name="action_confirm" string="Confirm" class="btn-primary" type="object" states="draft" groups="employee_expanse.group_expense_manager"/>
+                    <button id="action_approval_admin" name="action_approve" string="Approve" class="btn-primary" type="object" states="inprogress" groups="employee_expanse.group_expense_admin"/>
+                    <button id="action_cancel" name="action_cancel" string="Cancel" type="object" states="draft,inprogress" groups="employee_expanse.group_expense_manager"/>
+                    <button id="action_set_to_draft" name="action_set_to_draft" string="Set To Draft" class="btn-primary" type="object" states="cancel" groups="employee_expanse.group_expense_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,inprogress,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="employee_id"/>
+                        <field name="expense_type"/>
+                        <field name="attachment"/>
+                        <field name="amount"/>
+                        <field name="company_id"/>
+                    </group>
+                </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="employee_expanse_view_tree" model="ir.ui.view">
+        <field name="name">employee.expanse.tree</field>
+        <field name="model">employee.expanse</field>
+        <field name="arch" type="xml">
+            <tree decoration-warning="state == 'inprogress'"
+                       decoration-success="state == 'done'"
+                       decoration-muted="state == 'cancel'">
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="expense_type"/>
+                <field name="attachment"/>
+                <field name="amount"/>
+                <field name="state"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_expanse_action" model="ir.actions.act_window">
+        <field name="name">Employee Expanse</field>
+        <field name="res_model">employee.expanse</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="employee_expanse_domestic_action" model="ir.actions.act_window">
+        <field name="name">Employee Expanse Domestic</field>
+        <field name="res_model">employee.expanse</field>
+        <field name="context">{'default_expense_type':'domestic'}</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="employee_expanse_international_action" model="ir.actions.act_window">
+        <field name="name">Employee Expanse International</field>
+        <field name="res_model">employee.expanse</field>
+        <field name="context">{'default_expense_type':'international'}</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="employee_expanse_menu_root" name="Expanses" action="employee_expanse_action"/>
+    <menuitem id="employee_expanse_domestic_menu" name="Domestic Expanse" parent="employee_expanse_menu_root" action="employee_expanse_domestic_action" sequence="1"/>
+    <menuitem id="employee_expanse_international_menu" name="International Expanse" parent="employee_expanse_menu_root" action="employee_expanse_international_action" sequence="2"/>
+</odoo>

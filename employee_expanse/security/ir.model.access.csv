@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_expense_own,Employee Expenses Own,employee_expanse.model_employee_expanse,group_own_expense,1,1,1,0
+access_employee_expense_manager,Employee Expenses Manager,employee_expanse.model_employee_expanse,group_expense_manager,1,1,1,1
+access_employee_expense_admin,Employee Expenses Admin,employee_expanse.model_employee_expanse,group_expense_admin,1,1,1,1

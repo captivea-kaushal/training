@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="portal_my_home" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="url">/library_book</t>
+                <t t-set="title">Books</t>
+                <t t-set="placeholder_count" t-value="'library_book_counts'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_breadcrumbs" inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'library_book_tree_view'" class="breadcrumb-item">Books</li>
+            <li t-if="page_name == 'library_book_form_view'" class="breadcrumb-item">
+                <a href="/library_book">Books</a>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="library_book_tree_portal">
+        <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th class="text-center">Book Title</th>
+                        <th class="text-center">Author</th>
+                        <th class="text-center">Publish Date</th>
+                        <th class="text-center">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="books" t-as="book">
+                        <tr>
+                            <td class="text-center">
+                                <a t-attf-href="/library_book/#{book.id}">
+                                    <t t-out="book.name"/>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <t t-out="book.author"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-out="book.date_of_publication"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-out="book.price"/>
+                            </td>
+                        </tr>
+
+                    </t>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+    <template id="library_book_form_portal" inherit_id="portal.portal_sidebar">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <t t-if="page_name == 'library_book_form_view'">
+                <div class="row g-3 align-items-left">
+                  <div class="col-auto">
+                    <label for="book_name" class="col-form-label">Book Name :</label>
+                    <h5 id="book_name"><t t-out="book.name"/></h5>
+                  </div>
+                  <br/>
+                  <hr/>
+                  <div class="col-auto">
+                    <label for="book_author" class="col-form-label">Book Author :</label>
+                      <h5 id="book_author"><t t-out="book.author"/></h5>
+                  </div>
+                  <br/>
+                  <hr/>
+                  <div class="col-auto">
+                    <label for="book_dop" class="col-form-label">Date Of Publication :</label>
+                      <h5 id="book_dop"><t t-out="book.date_of_publication"/></h5>
+                  </div>
+                  <br/>
+                  <hr/>
+                  <div class="col-auto">
+                    <label for="book_price" class="col-form-label">Book Price :</label>
+                       <h5 id="book_price"><t t-out="book.price"/></h5>
+                  </div>
+                  <hr/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

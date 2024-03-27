@@ -1,0 +1,32 @@
+<odoo>
+
+    <record id="module_category_employee_expanse" model="ir.module.category">
+        <field name="name">Employee Expanse</field>
+        <field name="description">Category Employee Expanses</field>
+    </record>
+
+    <record id="group_own_expense" model="res.groups">
+        <field name="name">Own Expense</field>
+        <field name="category_id" ref="module_category_employee_expanse"/>
+    </record>
+
+
+    <record id="group_expense_manager" model="res.groups">
+        <field name="name">Expense Manager</field>
+        <field name="category_id" ref="module_category_employee_expanse"/>
+    </record>
+
+
+    <record id="group_expense_admin" model="res.groups">
+        <field name="name">Expense Admin</field>
+        <field name="category_id" ref="module_category_employee_expanse"/>
+        <field name="implied_ids" eval="[(4, ref('group_expense_manager'))]"/>
+    </record>
+
+    <record id="rule_employee_expense_own" model="ir.rule">
+        <field name="name">Own Employee Expenses</field>
+        <field name="model_id" ref="model_employee_expanse"/>
+        <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('employee_expanse.group_own_expense'))]"/>
+    </record>
+</odoo>
