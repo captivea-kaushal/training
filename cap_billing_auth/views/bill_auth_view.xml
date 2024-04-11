@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="bill_auth_view_tree" model="ir.ui.view">
+        <field name="name">bill.auth.tree</field>
+        <field name="model">bill.auth</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="allowed_product_ids" widget="many2many_tags"/>
+                <field name="allowed_account_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="bill_auth_view_form" model="ir.ui.view">
+        <field name="name">bill.auth.form</field>
+        <field name="model">bill.auth</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="allowed_product_ids" widget="many2many_tags"/>
+                        <field name="allowed_account_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bill_auth_action" model="ir.actions.act_window">
+        <field name="name">Bill Authorization Parameters</field>
+        <field name="res_model">bill.auth</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="bill_auth_menu_root" name="Bill Authentication"/>
+    <menuitem id="bill_auth_menu_set" name="Bill Authentication Settings" parent="bill_auth_menu_root" action="bill_auth_action"/>
+</odoo>
