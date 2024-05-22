@@ -1,4 +1,4 @@
-from odoo.addons.portal.controllers.portal import CustomerPortal
+from odoo.addons.portal.controllers.portal import CustomerPortal, pager
 from odoo.http import request
 
 class NewPortalClass(CustomerPortal):

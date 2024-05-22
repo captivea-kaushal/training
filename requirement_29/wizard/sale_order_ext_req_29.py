@@ -4,7 +4,7 @@ from odoo import api, fields, models
 class SaleOrder(models.TransientModel):
     _name = 'sale.salesperson'
     _transient_max_count = 3
-    _transient_max_hours = 1.0
+    _transient_max_hours = 0.1
 
     from_date = fields.Date('From Date')
     to_date = fields.Date('To Date')
@@ -14,7 +14,7 @@ class SaleOrder(models.TransientModel):
         data = {
             'from_date': self.from_date,
             'to_date': self.to_date,
-            'sales_person': self.sales_person.ids,  # Ensure you are passing IDs, not a string
+            'sales_person': self.sales_person.ids,
         }
         return self.env.ref('requirement_29.action_report_sale_order_req_29').report_action(self, data=data)
 

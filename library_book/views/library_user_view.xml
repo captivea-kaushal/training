@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="library_user_view_form" model="ir.ui.view">
+        <field name="name">library.user.view.form</field>
+        <field name="model">library.user</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="book_id"/>
+                        <field name="related_m2m"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="library_user_view_tree" model="ir.ui.view">
+        <field name="name">library.user.view.tree</field>
+        <field name="model">library.user</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="book_id"/>
+                <field name="related_m2m"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="library_user_action" model="ir.actions.act_window">
+        <field name="name">Library</field>
+        <field name="res_model">library.user</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="library_user" name="User" action="library_user_action" parent="library_book_root"/>
+</odoo>

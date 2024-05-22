@@ -6,26 +6,17 @@ from odoo.osv import expression
 class StudentTeacher(models.Model):
     _name = 'practice.student.teacher'
     _description = 'Details of Teacher'
+    _rec_name = 'teacher_name'
 
     teacher_name = fields.Char(string='Teacher Name')
 
     subject = fields.Char(string='Subject')
     date_of_joining = fields.Date(string='Date of joining')
 
+    # student_id = fields.Many2one('practice.student.profile',string='Student_id')
+    #
+    # related_of_m2m_ids = fields.Many2many(related='student_id.result_ids', string='related_of_m2m_ids', readonly=False)
+    #
+    # related_new_m2m_ids = fields.Many2many(related='student_id.crm_lead_ids', string='related_of_m2m_new_ids', readonly=False,store=True)
+
     is_active = fields.Boolean(string='Is Active')
-
-    def name_get(self):
-        res = []
-        for rec in self:
-            teacher_name = rec.teacher_name or ''
-            subject = rec.subject or ''
-            name = f"{teacher_name} - {subject}"
-            res.append((rec.id, name))
-        return res
-
-    @api.model
-    def _name_search(self, name='', args=None, operator='ilike', limit=100, name_get_uid=None):
-        if args is None:
-            args = []
-        domain = ['|', ('teacher_name', operator, name), ('subject', operator, name)]
-        return self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)

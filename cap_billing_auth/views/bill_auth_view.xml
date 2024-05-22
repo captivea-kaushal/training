@@ -8,6 +8,7 @@
                 <field name="partner_id"/>
                 <field name="allowed_product_ids" widget="many2many_tags"/>
                 <field name="allowed_account_ids" widget="many2many_tags"/>
+
             </tree>
         </field>
     </record>

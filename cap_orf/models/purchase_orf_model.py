@@ -57,4 +57,3 @@ class PurchaseOrf(models.Model):
                                         'price_unit':line.unit_price,}
 
             self.env['purchase.order.line'].create(purchase_order_line_vals)
-

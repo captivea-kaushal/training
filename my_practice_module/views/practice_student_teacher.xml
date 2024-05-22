@@ -10,6 +10,8 @@
                         <field name="teacher_name"/>
                         <field name="subject"/>
                         <field name="is_active" widget="boolean_toggle"/>
+<!--                        <field name="student_id"/>-->
+<!--                        <field name="related_of_m2m_ids" widget="many2many_tags"/>-->
                     </group>
                 </sheet>
             </form>
@@ -24,6 +26,8 @@
                 <field name="teacher_name"/>
                 <field name="subject"/>
                 <field name="is_active" widget="boolean_toggle"/>
+<!--                <field name="student_id"/>-->
+<!--                <field name="related_of_m2m_ids" widget="many2many_tags"/>-->
             </tree>
         </field>
     </record>

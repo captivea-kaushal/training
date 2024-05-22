@@ -11,6 +11,7 @@
                         <field name="min_marks"/>
                         <field name="max_marks"/>
                         <field name="obtained_marks"/>
+<!--                        <field name="property_field_new" nolabel="1" columns="2" hideKanbanOption="1"/>-->
                     </group>
                 </sheet>
             </form>

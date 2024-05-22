@@ -1,36 +1,34 @@
-from odoo import models,fields,api,_
-from odoo.exceptions import AccessError
+from odoo import models, fields, api, _
+from odoo.exceptions import AccessError, ValidationError
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    @api.model
-    def create(self, vals):
 
-        move = super(AccountMove, self).create(vals)
+    # def write(self,vals):
+    #     res = super(AccountMove, self).write(vals)
+    #     print('vals*****',vals)
+    #     # for line in self.invoice_line_ids:
+    #     #     print('vals.....', vals.get('invoice_line_ids'))
+    #     return res
 
-        # Check if partner_id exists in bill.auth
-        authorization = self.env['bill.auth'].search([('partner_id', '=', move.partner_id.id)])
-        if not authorization:
-            return move  # Allow creation if partner not found in bill.auth
-
-        else:
-            for line in move.invoice_line_ids:
-                if line.product_id and line.account_id:
-                    authorization = self.env['bill.auth'].search([
-                        ('partner_id', '=', move.partner_id.id),
-                        ('allowed_product_ids', 'in', line.product_id.id),
-                        ('allowed_account_ids', 'in', line.account_id.id)
-                    ])
-                    print('************',authorization)
-                    if not authorization:
-                        allowed_products_and_accounts = self.env['bill.auth'].search([('partner_id', '=', move.partner_id.id)])
-
-                        if allowed_products_and_accounts:
-                            allowed_products = ', '.join(allowed_products_and_accounts.mapped('allowed_product_ids.name'))
-                            allowed_accounts = ', '.join(allowed_products_and_accounts.mapped('allowed_account_ids.name'))
-                            raise AccessError(_("The selected vendor only have authorization for the following products and accounts. \n\nAllowed products: %s\nAllowed accounts: %s") % (allowed_products, allowed_accounts))
-                        else:
-                            raise AccessError(_("The selected vendor dose not have authorization for any products or accounts !!\n\nPlease Contact Administration for Authorization"))
-
-        return move
+    # @api.model
+    # def create(self, vals):
+    #     move = super(AccountMove, self).create(vals)
+    #
+    #     authorization = self.env['bill.auth'].search([('partner_id', '=', move.partner_id.id)])
+    #
+    #     if authorization:
+    #         for line in move.invoice_line_ids:
+    #             allowed_products = authorization.allowed_product_ids.ids
+    #             print('allowed products in create', allowed_products)
+    #             print('product id in vals in create', line.product_id.id)
+    #             allowed_accounts = authorization.allowed_account_ids.ids
+    #             print('allowed account in create', allowed_accounts)
+    #             print('account id in vals in create', line.account_id.id)
+    #
+    #             if line.product_id.id not in allowed_products:
+    #                 raise ValidationError(_('Selected product is not allowed for this partner.'))
+    #             elif line.account_id.id not in allowed_accounts:
+    #                 raise ValidationError(_('Selected account is not allowed for this partner.'))
+    #     return move

@@ -158,7 +158,4 @@
 
     <menuitem id="purchase_orf_tree_form_product_menu" parent="purchase_orf_root" name="Product" action="purchase_orf_product_action"/>
 
-
-
-
 </odoo>

@@ -13,6 +13,7 @@
             'security/ir.model.access.csv',
             'views/portal_template.xml',
             'views/library_book_view.xml',
+            'views/library_user_view.xml',
             ],
     'demo':[],
     'installable':True,

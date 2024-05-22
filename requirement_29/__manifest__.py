@@ -2,6 +2,7 @@
     'name':'Requirement_29',
     'description':'to perform requirement 29 as per instruction',
     'author':'Karan',
+    'category':'Sales',
     'sequence':-32,
     'depends':['base','sale'],
     'data':['security/ir.model.access.csv',
@@ -9,7 +10,7 @@
             'reports/stock_picking_ext_req_23_report.xml',
             ],
     'demo':[],
-    'application':True,
+    'application':False,
     'installable':True,
     'license':'LGPL-3'
 }

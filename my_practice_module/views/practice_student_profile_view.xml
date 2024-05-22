@@ -4,40 +4,17 @@
         <field name="name">my_practice_module.student_profile.form</field>
         <field name="model">practice.student.profile</field>
         <field name="arch" type="xml">
-
             <form>
                 <sheet>
                     <group>
                         <field name="student_name"/>
                         <field name="date_of_birth"/>
-                        <field name="age" groups="my_practice_module.group_my_practice_module_student"/>
+                        <field name="age" />
                         <field name="counter"/>
                         <field name="scale1"/>
                         <field name="base_count"/>
-                        <field name="variable_count"/>
+                        <field name="high_name"/>
                     </group>
-                    <group>
-                        <field name="teacher_for_student_id" options="{'no_create': True}">
-                            <tree>
-                                <field name="teacher_name"/>
-                            </tree>
-                        </field>
-                    </group>
-                    <group>
-                        <button name="action_test" string="Test it !" type="object" class="oe_highlight"/>
-                    </group>
-                    <notebook>
-                        <page string="Result">
-                            <field name="result_for_student_ids" widget="one2many_list">
-                                <tree>
-                                    <field name="subject"/>
-                                    <field name="min_marks"/>
-                                    <field name="max_marks"/>
-                                    <field name="obtained_marks"/>
-                                </tree>
-                            </field>
-                        </page>
-                     </notebook>
                 </sheet>
             </form>
         </field>
@@ -50,11 +27,12 @@
             <tree>
                 <field name="student_name"/>
                 <field name="date_of_birth"/>
-                <field name="age"/>
+                <field name="age" groups="my_practice_module.group_my_practice_module_student"/>
                 <field name="counter"/>
                 <field name="scale1"/>
                 <field name="base_count"/>
-                <field name="variable_count"/>
+                <field name="high_name"/>
+<!--                <field name="result_ids" widget="many2many_tags"/>-->
             </tree>
         </field>
     </record>
@@ -77,6 +55,7 @@
         <field name="name">Student Profile</field>
         <field name="res_model">practice.student.profile</field>
         <field name="view_mode">tree,form,search</field>
+        <field name="limit">5</field>
     </record>
 
     <menuitem id="practice_student_profile_menu_root" name="Student" action="practice_student_profile_action"/>

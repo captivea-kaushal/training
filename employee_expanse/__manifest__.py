@@ -30,7 +30,8 @@ The whole flow is implemented as:
              'views/hr_employee.xml',
              ],
     'demo': [],
+    'auto_install':[],
     'installable': True,
-    'application': True,
+    'application': False,
     'license': 'LGPL-3',
 }

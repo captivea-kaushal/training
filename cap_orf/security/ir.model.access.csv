@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-cap_orf.access_purchase_orf,access_purchase_orf,cap_orf.model_purchase_orf,base.group_user,1,1,1,1
+cap_orf.access_purchase_orf,access_purchase_orf,cap_orf.model_purchase_orf,group_own_purchase_orf,1,1,1,1
 cap_orf.access_order_line,access_order_line,cap_orf.model_order_line,base.group_user,1,1,1,1
+access_purchase_orf_admin,Purchase ORF Admin,cap_orf.model_purchase_orf,group_admin_purchase_orf,1,1,1,1

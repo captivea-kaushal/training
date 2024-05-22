@@ -21,37 +21,38 @@
 
     <template id="library_book_tree_portal">
         <t t-call="portal.portal_layout">
-            <t t-call="portal.portal_table">
-                <thead>
-                    <tr class="active">
-                        <th class="text-center">Book Title</th>
-                        <th class="text-center">Author</th>
-                        <th class="text-center">Publish Date</th>
-                        <th class="text-center">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <t t-foreach="books" t-as="book">
-                        <tr>
-                            <td class="text-center">
-                                <a t-attf-href="/library_book/#{book.id}">
-                                    <t t-out="book.name"/>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <t t-out="book.author"/>
-                            </td>
-                            <td class="text-center">
-                                <t t-out="book.date_of_publication"/>
-                            </td>
-                            <td class="text-center">
-                                <t t-out="book.price"/>
-                            </td>
+            <div>
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th class="text-center">Book Title</th>
+                            <th class="text-center">Author</th>
+                            <th class="text-center">Publish Date</th>
+                            <th class="text-center">Price</th>
                         </tr>
-
-                    </t>
-                </tbody>
-            </t>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="books" t-as="book">
+                            <tr>
+                                <td class="text-center">
+                                    <a t-attf-href="/library_book/#{book.id}">
+                                        <t t-out="book.name"/>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <t t-out="book.author"/>
+                                </td>
+                                <td class="text-center">
+                                    <t t-out="book.date_of_publication"/>
+                                </td>
+                                <td class="text-center">
+                                    <t t-out="book.price"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+            </div>
         </t>
     </template>
 

@@ -9,5 +9,5 @@ class School(http.Controller):
         return request.render('my_practice_module.student_cont_template',{'students':students})
 
     @http.route('/school/hello',website=False, auth='public')
-    def school_hello(selfself,**kw):
+    def school_hello(self,**kw):
         return "Hello World from Karan !!"
